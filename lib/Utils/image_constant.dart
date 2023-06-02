@@ -1,0 +1,27 @@
+class AppImages {
+  static String imgLogo3 = 'assets/images/img_logo3.png';
+  static String imgGrid = 'assets/images/img_grid.svg';
+  static String imgSearchGray600 = 'assets/images/img_search_gray_600.svg';
+  static String imgVector = 'assets/images/img_vector.svg';
+  static String imgVideocam = 'assets/images/img_videocam.svg';
+  static String imgEllipse37 = 'assets/images/img_ellipse37.png';
+  static String imgEllipse35 = 'assets/images/img_ellipse35.png';
+  static String imgImage11 = 'assets/images/img_image11.png';
+  static String imgSearch = 'assets/images/img_search.svg';
+  static String imageNotFound = 'assets/images/image_not_found.png';
+  static String aibot = 'assets/images/image_not_found.png';
+  static String backLogin = 'assets/images/baackground.png';
+  static String backLoginll = 'assets/images/backllll.png';
+  static String logoname = 'assets/images/logoname.png';
+  static String metamask = 'assets/images/metamaskpng.png';
+  static String pubg = 'assets/images/pubg.png';
+  static String fortnite = 'assets/images/fortnite.png';
+  static String walletconnectpng = 'assets/images/walletconnectpng.png';
+  static String metamasksvg = 'assets/images/metamask.svg';
+  static String wallet = 'assets/images/walletcnt.svg';
+  static String john = 'assets/images/john.png';
+  static String drawerBackground = 'assets/images/background2.png';
+  static String backgroundDra = 'assets/images/backgroundDra.png';
+  static String profileBackG= 'assets/images/gamepic.png';
+  static String profilepic= 'assets/images/dog.png';
+}
