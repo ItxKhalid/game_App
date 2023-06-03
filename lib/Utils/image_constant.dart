@@ -22,6 +22,10 @@ class AppImages {
   static String john = 'assets/images/john.png';
   static String drawerBackground = 'assets/images/background2.png';
   static String backgroundDra = 'assets/images/backgroundDra.png';
-  static String profileBackG= 'assets/images/gamepic.png';
-  static String profilepic= 'assets/images/dog.png';
+  static String profileBackG = 'assets/images/gamepic.png';
+  static String profilepic = 'assets/images/dog.png';
+  static String settingprofile = 'assets/images/settingprofile.png';
+  static String logo = 'assets/images/logo.svg';
+  static String logopng = 'assets/images/logo.png';
+  static String profilecover = 'assets/images/profilecover.png';
 }
