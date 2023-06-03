@@ -14,6 +14,11 @@ class AppStyle{
       fontSize: 12.sp,
       fontFamily: AppConstant.interMedium,
       fontWeight: FontWeight.w700);
+  static TextStyle textStyle8White600 =  TextStyle(
+      color: AppColors.whiteA700,
+      fontSize: 8.sp,
+      fontFamily: AppConstant.interMedium,
+      fontWeight: FontWeight.w600);
   static TextStyle textStyle13SemiBoldGreen =  TextStyle(
       color: AppColors.whiteA700,
       fontSize: 13.sp,
@@ -54,6 +59,11 @@ class AppStyle{
       fontSize: 11.sp,
       fontFamily: AppConstant.interMedium,
       fontWeight: FontWeight.w500);
+  static TextStyle textStyle11SemiBoldWhite600 =  TextStyle(
+      color: AppColors.whiteA700,
+      fontSize: 11.sp,
+      fontFamily: AppConstant.interMedium,
+      fontWeight: FontWeight.w600);
   static TextStyle textStyle9SemiBoldWhite =  TextStyle(
       color: AppColors.whiteA700,
       fontSize: 9.sp,

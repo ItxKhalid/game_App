@@ -5,7 +5,11 @@ import '../Utils/appconstant.dart';
 
 class CustomText extends StatelessWidget {
   CustomText(
-      {Key? key, required this.textStyle, this.textAlign, required this.title, this.maxline})
+      {Key? key,
+      required this.textStyle,
+      this.textAlign,
+      required this.title,
+      this.maxline})
       : super(key: key);
   String title;
   TextStyle? textStyle;
@@ -14,7 +18,8 @@ class CustomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(textAlign: textAlign,
+    return Text(
+      textAlign: textAlign,
       title,
       style: textStyle,
       maxLines: maxline,

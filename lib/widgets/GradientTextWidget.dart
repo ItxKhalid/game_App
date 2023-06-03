@@ -17,7 +17,7 @@ class GradientTextWidget extends StatelessWidget {
         foreground: Paint()..shader = LinearGradient(
           colors: [
             AppColors.redAccsent,
-            AppColors.indigo,
+            AppColors.mainColor,
             AppColors.indigo,
           ],
         ).createShader(

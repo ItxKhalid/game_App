@@ -44,6 +44,7 @@ dependencies:
   carousel_slider: ^4.2.1
   awesome_drawer_bar: ^1.2.0
   image_picker: ^0.8.5+3
+  textfield_tags: ^2.0.2
 
 dev_dependencies:
   flutter_test:

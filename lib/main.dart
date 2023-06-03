@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'BottomNavBar.dart';
+import 'View/CreateALiveStream/createStream_view.dart';
 import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
 import 'View/Login/login_View.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home:    const ProfileView(),
+          home:    const CreateStream(),
         );
       },
 
