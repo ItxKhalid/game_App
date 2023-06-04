@@ -5,7 +5,6 @@ import 'BottomNavBar.dart';
 import 'View/CreateALiveStream/createStream_view.dart';
 import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
-import 'View/InfoOfOngoingStream(HostView)/infoOngoingStream_view.dart';
 import 'View/Login/login_View.dart';
 import 'View/Profile/profile_view.dart';
 
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home:    const InfoOngoingStreamView(),
+          home:    const CreateStream(),
         );
       },
 
