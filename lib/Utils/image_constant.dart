@@ -24,4 +24,5 @@ class AppImages {
   static String backgroundDra = 'assets/images/backgroundDra.png';
   static String profileBackG= 'assets/images/gamepic.png';
   static String profilepic= 'assets/images/dog.png';
+  static String success12 = 'assets/images/success.png';
 }

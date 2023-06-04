@@ -54,6 +54,7 @@ class _TagsTextFieldState extends State<TagsTextField> {
                 ],
               ),
             ),
+            CustomSizedBoxHeight(height: 4),
             TextFieldTags(
               textfieldTagsController: _controller,
               initialTags: const [
@@ -80,13 +81,8 @@ class _TagsTextFieldState extends State<TagsTextField> {
                       focusNode: fn,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        isDense: true,
-                        border:  const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 3.0,
-                          ),
-                        ),
+
+                        border: InputBorder.none,
                         focusedBorder:  OutlineInputBorder(
                           borderSide: BorderSide(
                             color: AppColors.indigo,

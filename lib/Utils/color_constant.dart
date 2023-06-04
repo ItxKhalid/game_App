@@ -17,4 +17,6 @@ class AppColors {
   static Color  bgGradient1 =  const Color(0xff1C1C1C);
   static Color  bgGradient2 =  const Color(0xff272A4E);
   static Color  bgGradient3 =  const Color(0xff26294A);
+  static Color  bgGradient4 =  const Color(0xff08BDCA);
+  static Color  blue =  const Color(0xff387EE8);
 }

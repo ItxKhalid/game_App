@@ -64,6 +64,11 @@ class AppStyle{
       fontSize: 11.sp,
       fontFamily: AppConstant.interMedium,
       fontWeight: FontWeight.w600);
+  static TextStyle textStyle11SemiBoldWhite400 =  TextStyle(
+      color: AppColors.whiteA700,
+      fontSize: 11.sp,
+      fontFamily: AppConstant.interMedium,
+      fontWeight: FontWeight.w400);
   static TextStyle textStyle9SemiBoldWhite =  TextStyle(
       color: AppColors.whiteA700,
       fontSize: 9.sp,
@@ -87,5 +92,10 @@ class AppStyle{
       fontSize: 17.sp,
       color: Colors.white,
       fontWeight: FontWeight.w700,
+      fontFamily: AppConstant.interBold);
+  static TextStyle textStyle16Bold600 =  TextStyle(
+      fontSize: 16.sp,
+      color: Colors.white,
+      fontWeight: FontWeight.w600,
       fontFamily: AppConstant.interBold);
 }

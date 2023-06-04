@@ -14,7 +14,9 @@ import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
 
 class DrawerWithNavBar extends StatefulWidget {
-  const DrawerWithNavBar({Key? key}) : super(key: key);
+  Widget screen;
+
+  DrawerWithNavBar({Key? key, required this.screen}) : super(key: key);
 
   @override
   State<DrawerWithNavBar> createState() => _DrawerWithNavBarState();
@@ -38,7 +40,7 @@ class _DrawerWithNavBarState extends State<DrawerWithNavBar> {
       angle: 0.0,
       shadowLayer2Color: AppColors.textField.withOpacity(0.8),
       shadowLayer1Color: AppColors.bgGradient1.withOpacity(0.6),
-      mainScreen: const DashBoardScreen(),
+      mainScreen: widget.screen,
       menuScreen: Theme(
         data: ThemeData.dark(),
         child: Scaffold(
@@ -363,7 +365,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
+    return DrawerWithNavBar(
+        screen: PersistentTabView(
       navBarHeight: 60,
       context,
       screens: _screens(),
@@ -373,6 +376,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       navBarStyle: NavBarStyle.style6,
       decoration: NavBarDecoration(borderRadius: BorderRadius.circular(1)),
       stateManagement: true,
-    );
+    ));
   }
 }
