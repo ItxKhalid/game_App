@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static Color scaflodbgcolor = const Color(0xff1E1F37);
   static Color whiteA700 = const Color(0xffffffff);
   static Color offwhite = const Color(0xff8F8F8F);
   static Color mainColor = const Color(0xffC098FF);
@@ -20,4 +21,6 @@ class AppColors {
   static Color bgGradient3 = const Color(0xff26294A);
   static Color txtGradient1 = const Color(0xffFFBDBD);
   static Color txtGradient2 = const Color(0xff8955EB);
+  static Color backbutton = const Color(0xff000000).withOpacity(0.8);
+  static Color iconcolor = const Color(0xffE2A3C9);
 }

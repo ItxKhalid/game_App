@@ -19,6 +19,11 @@ class AppStyle {
       fontSize: 12.sp,
       fontFamily: AppConstant.interMedium,
       fontWeight: FontWeight.w600);
+  static TextStyle textStyle8offWhite = TextStyle(
+      color: AppColors.offwhite,
+      fontSize: 8.sp,
+      fontFamily: AppConstant.interMedium,
+      fontWeight: FontWeight.w600);
   static TextStyle textStyle8White600 = TextStyle(
       color: AppColors.whiteA700,
       fontSize: 8.sp,

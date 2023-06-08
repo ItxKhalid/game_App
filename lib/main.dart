@@ -7,9 +7,12 @@ import 'Provider/settings_provider.dart';
 import 'View/CreateALiveStream/createStream_view.dart';
 import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
+import 'View/LiveStreamResCreator/livestream_rescreatorView.dart';
+import 'View/LiveStream_ActiveScreen/livestream_activescreenView.dart';
 import 'View/Login/login_View.dart';
 import 'View/Profile/profile_view.dart';
 import 'View/Settings/settings_view.dart';
+import 'View/StreamComments/StreamComments_View.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +39,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: const SettingsView(),
+              home: const LiveStreamResCreator(),
             ));
       },
     );

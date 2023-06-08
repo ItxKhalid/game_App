@@ -28,4 +28,9 @@ class AppImages {
   static String logo = 'assets/images/logo.svg';
   static String logopng = 'assets/images/logo.png';
   static String profilecover = 'assets/images/profilecover.png';
+  static String streamcomnts = 'assets/images/streamcomnts.png';
+  static String expandicon = 'assets/images/expandicon.svg';
+  static String expandvctr = 'assets/images/Vector.png';
+  static String livestream = 'assets/images/livestream.png';
+  static String livestream1 = 'assets/images/livestream1.png';
 }
