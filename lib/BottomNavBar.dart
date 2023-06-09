@@ -1,3 +1,4 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,10 +9,11 @@ import 'package:game/Utils/color_constant.dart';
 import 'package:game/Utils/image_constant.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
 import 'package:game/widgets/customtext.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'View/CreateALiveStream/createStream_view.dart';
 import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
+import 'View/Favorites/favorites_View.dart';
 
 class DrawerWithNavBar extends StatefulWidget {
   Widget screen;
@@ -145,9 +147,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         z.toggle!();
       }),
       const Center(child: Text('data')),
+      const CreateStream(),
       const Center(child: Text('data')),
-      const Center(child: Text('data')),
-      const Center(child: Text('data')),
+      const FavoritesView(),
       // AllUserScreen(),
       // ProfileScreen()
     ];
@@ -306,20 +308,17 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 ],
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(100)),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(
-                AppImages.imgSearch,
-                color: AppColors.mainColor,
-              ),
+            child: SvgPicture.asset(
+              AppImages.imgSearch,
+              color: AppColors.mainColor,
             )),
         activeColorPrimary: Colors.white,
         inactiveIcon: Container(
-            height: 40,
+            height: 30,
             width: 45,
             color: Colors.transparent,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top: 2),
               child: SvgPicture.asset(AppImages.imgSearch),
             )),
         activeColorSecondary: AppColors.mainColor,
@@ -379,3 +378,37 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     ));
   }
 }
+// class HelloConvexAppBar extends StatefulWidget {
+//   @override
+//   State<HelloConvexAppBar> createState() => _HelloConvexAppBarState();
+// }
+//
+// class _HelloConvexAppBarState extends State<HelloConvexAppBar> {
+//
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     bool isTap = false ;
+//     return Scaffold(
+//       body: Center(
+//           child: TextButton(
+//             child: Text('Click to show full example'),
+//             onPressed: () => Navigator.of(context).pushNamed('/bar'),
+//           )),
+//       bottomNavigationBar: ConvexAppBar(
+//         style: TabStyle.react,
+//         backgroundColor: Colors.indigo,
+//         shadowColor: Colors.transparent,
+//         curve: Curves.decelerate,
+//         curveSize: 300,
+//         items: [
+//           TabItem(icon:SvgPicture.asset(AppImages.imgSearch)),
+//           TabItem(icon: Container()),
+//           TabItem(icon: Icons.assessment),
+//         ],
+//         initialActiveIndex: 1,
+//         onTap: (int i) => print('click index=$i'),
+//       ),
+//     );
+//   }
+// }

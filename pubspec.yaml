@@ -37,15 +37,19 @@ dependencies:
   flutter_screenutil:
   flutter_svg:
   cached_network_image:
-  persistent_bottom_nav_bar_v2: ^4.2.8
+  persistent_bottom_nav_bar:
   flutter_zoom_drawer: ^3.0.4+1
   get: ^4.6.5
-  provider: ^6.0.5
+  provider:
   carousel_slider: ^4.2.1
   awesome_drawer_bar: ^1.2.0
   image_picker: ^0.8.5+3
   textfield_tags: ^2.0.2
   simple_gradient_text: ^1.2.4
+  top_snackbar_flutter: ^3.0.0+1
+  flutter_chat_ui:
+  mime:
+  convex_bottom_bar: ^3.2.0
 
 dev_dependencies:
   flutter_test:

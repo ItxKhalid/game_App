@@ -7,6 +7,8 @@ import 'package:game/Utils/app_style.dart';
 import 'package:game/Utils/image_constant.dart';
 import 'package:game/View/DashBoard/Components/CarouselSlider_container.dart';
 import 'package:game/View/Drawer/Drawer_view.dart';
+import 'package:game/View/Profile/profile_view.dart';
+import 'package:game/View/Settings/settings_view.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
 import 'package:game/widgets/customtext.dart';
 import '../../Utils/color_constant.dart';
@@ -17,7 +19,6 @@ import 'Components/topVideos_widget.dart';
 
 class DashBoardView extends StatefulWidget {
   Function() onTapDrawer;
-
   DashBoardView({required this.onTapDrawer});
 
   @override
@@ -55,6 +56,23 @@ class _DashBoardViewState extends State<DashBoardView> {
           children: [
             CustomSizedBoxHeight(height: 35),
             CustomAppBar(
+              notificationOntap: (){},
+              profileOntap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProfileView(),
+                  ),
+                );
+              },
+              settingOntap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsView(),
+                  ),
+                );
+              },
               searchOntap: () {},
               drawerOntap: widget.onTapDrawer,
             ),

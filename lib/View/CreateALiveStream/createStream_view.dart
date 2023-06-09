@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game/BottomNavBar.dart';
 import 'package:game/Utils/app_style.dart';
 import 'package:game/View/CreateALiveStream/success_view.dart';
+import 'package:game/View/Profile/profile_view.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
 import 'package:game/widgets/custom_appbar.dart';
 import 'package:game/widgets/customtext.dart';
@@ -12,6 +13,7 @@ import '../../widgets/GradientTextWidget.dart';
 import '../../widgets/customButton.dart';
 import '../../widgets/custom_text_form_field.dart';
 import '../Drawer/Drawer_view.dart';
+import '../Settings/settings_view.dart';
 import 'components/TagesTextFeild.dart';
 import 'components/selectedContainer_widget.dart';
 
@@ -45,6 +47,23 @@ class _CreateStreamState extends State<CreateStream> {
           leadingWidth: double.infinity,
           leading: CustomAppBar(
             searchOntap: () {},
+            settingOntap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingsView(),
+                ),
+              );
+            },
+            profileOntap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfileView(),
+                ),
+              );
+            },
+            notificationOntap: (){},
             drawerOntap: () {
               z.toggle!();
             },

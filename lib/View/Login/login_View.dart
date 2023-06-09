@@ -17,19 +17,13 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
-        width: MediaQuery
-            .of(context)
-            .size
-            .width,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(AppImages.backLoginll),
-              fit: BoxFit.fill,
-            )),
+          image: AssetImage(AppImages.backLoginll),
+          fit: BoxFit.fill,
+        )),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,14 +37,14 @@ class LoginView extends StatelessWidget {
             CustomText(
               textStyle: AppStyle.textStyle13Regular,
               title:
-              'This party’s just getting started! Sign in to\n join the fun. ',
+                  'This party’s just getting started! Sign in to\n join the fun. ',
               textAlign: TextAlign.center,
               maxline: 2,
             ),
             CustomSizedBoxHeight(height: 20),
             CustomButton(
                 ontap: () {
-                  Navigator.push(context ,MaterialPageRoute(builder: (context) => DashBoardScreen(),));
+                  // Navigator.push(context ,MaterialPageRoute(builder: (context) => DashBoardScreen(),));
                 },
                 image: AppImages.metamask,
                 title: 'MetaMask',
@@ -64,8 +58,7 @@ class LoginView extends StatelessWidget {
                     AppColors.indigo.withOpacity(0.4),
                     AppColors.indigo.withOpacity(0.4),
                   ],
-                )
-            ),
+                )),
             CustomSizedBoxHeight(height: 20.h),
             CustomButton(
                 ontap: () {
@@ -83,8 +76,7 @@ class LoginView extends StatelessWidget {
                     AppColors.indigo.withOpacity(0.4),
                     AppColors.indigo.withOpacity(0.4),
                   ],
-                )
-            ),
+                )),
             CustomSizedBoxHeight(height: 20.h),
           ],
         ),

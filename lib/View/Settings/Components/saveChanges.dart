@@ -56,7 +56,7 @@ class SaveChanges extends StatelessWidget {
             child: CustomText(
           textStyle: AppStyle.textStyle12offWhite,
           title: "Save Changes",
-        )),
+        ))
       ),
     );
   }

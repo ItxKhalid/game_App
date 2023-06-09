@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:game/Provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -27,27 +28,26 @@ class AvatarRow extends StatelessWidget {
                 SizedBox(height: 10.h),
                 Stack(
                   alignment: Alignment.center,
+                  clipBehavior: Clip.none,
                   children: [
                     CircleAvatar(
                       radius: 40.r,
-                      backgroundColor: Color(0xFFFFFFFF),
-                      backgroundImage: AssetImage(AppImages.settingprofile),
+                      backgroundColor: const Color(0xFFFFFFFF),
+                      // backgroundImage: AssetImage(AppImages.imgEllipse35),
                       child: provider.imageFile != null
                           ? ClipOval(
                               child: Image.file(
                                 provider.imageFile!,
                                 fit: BoxFit.cover,
-                                width: 130.w,
+                                width: 200.w,
                                 height: 130.h,
                               ),
                             )
-                          : const Center(
-                              child: Text(''),
-                            ),
+                          :  Image.asset(AppImages.avatar76,fit: BoxFit.cover,height:130,width: 200,)
                     ),
                     Positioned(
-                      left: 52.w,
-                      top: 4.h,
+                      left: 60.w,
+                      top: 2.h,
                       child: Container(
                         width: 26.w,
                         height: 26.h,
@@ -96,7 +96,9 @@ class AvatarRow extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4.r),
                   border: Border.all(color: AppColors.mainColor, width: 1)),
-              child: Column(children: [
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                 SizedBox(height: 10.h),
                 CustomText(
                     textStyle: AppStyle.textStyle12Regular, title: "Balance"),
@@ -114,7 +116,8 @@ class AvatarRow extends StatelessWidget {
                 SizedBox(height: 6.h),
                 Container(
                   height: 36.h,
-                  decoration: BoxDecoration(
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -122,6 +125,12 @@ class AvatarRow extends StatelessWidget {
                         Color(0xff7449EF),
                         Color(0xffB260FB),
                       ],
+                    ),
+                  ),
+                  child: Center(
+                    child: CustomText(
+                      textStyle: AppStyle.textStyle12regularWhite,
+                      title: 'Withdraw',
                     ),
                   ),
                 )

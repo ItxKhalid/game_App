@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game/test_screen.dart';
 import 'package:get/get.dart';
 import 'BottomNavBar.dart';
+import 'package:provider/provider.dart';
+import 'Provider/settings_provider.dart';
 import 'View/CreateALiveStream/createStream_view.dart';
 import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
 import 'View/Login/login_View.dart';
 import 'View/Profile/profile_view.dart';
+import 'View/Settings/settings_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,17 +27,19 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home:    const CreateStream(),
-        );
+        return MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => SettingsProvider()),
+            ],
+            child: GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              home:  const LoginView(),
+            ));
       },
-
     );
   }
 }
-

@@ -1,12 +1,17 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game/Utils/image_constant.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
 import 'package:game/widgets/custom_appbar.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../Utils/color_constant.dart';
+import '../Donation/BottomSheet.dart';
+import '../Donation/NFT_View/SuccessNft.dart';
+import '../Donation/NFT_View/donationDetailScreen.dart';
+import '../Drawer/Drawer_view.dart';
+import '../Settings/settings_view.dart';
 import 'Components/ProfileDetails.dart';
 import 'Components/RoundButtonProfile.dart';
 import 'Components/circularProfile.dart';
@@ -41,11 +46,24 @@ class _ProfileViewState extends State<ProfileView> {
                 backgroundColor: Colors.transparent,
                 leading: CustomAppBar(
                   searchOntap: () {},
-                  drawerOntap: () {},
+                  drawerOntap: () {
+                    z.toggle!();
+                  },
+                  notificationOntap: () {},
+                  profileOntap: () {},
+                  settingOntap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SettingsView(),
+                      ),
+                    );
+                  },
                 ),
                 leadingWidth: double.infinity,
               ),
               body: ListView(
+                physics: const BouncingScrollPhysics(),
                 padding: EdgeInsets.zero,
                 children: [
                   Stack(children: [
@@ -55,8 +73,8 @@ class _ProfileViewState extends State<ProfileView> {
                             height: 631.h,
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.vertical(top: Radius.circular(30.r)),
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(30.r)),
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -67,12 +85,89 @@ class _ProfileViewState extends State<ProfileView> {
                                   ]),
                             ),
                             child: Column(
-                              children:  [
+                              children: [
                                 ///All details
-                                ProfileDetails(),
+                                const ProfileDetails(),
+
                                 ///All Round Buttons
-                                 RoundButtonProfile(),
+                                RoundButtonProfile(
+                                  onTapFollow: () {},
+                                  onTapMessage: () {},
+                                  onTapSupport: () {
+                                    showModalBottomSheet(
+                                      barrierColor:
+                                          AppColors.gray.withOpacity(0.4),
+                                      backgroundColor: AppColors.bgGradient2A,
+                                      isDismissible: true,
+                                      useSafeArea: true,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(25.r),
+                                          topRight: Radius.circular(25.r),
+                                        ),
+                                      ),
+                                      isScrollControlled: true,
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return BottomSheetView(
+                                          onTapNft: () {
+                                            Get.to(showModalBottomSheet(
+                                              barrierColor: AppColors.gray
+                                                  .withOpacity(0.4),
+                                              backgroundColor:
+                                                  AppColors.bgGradient2A,
+                                              isDismissible: true,
+                                              useSafeArea: true,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(25.r),
+                                                  topRight:
+                                                      Radius.circular(25.r),
+                                                ),
+                                              ),
+                                              isScrollControlled: true,
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return DonationDetailView(
+                                                    onTapMint: () {
+                                                  Get.to(showModalBottomSheet(
+                                                    barrierColor: AppColors.gray
+                                                        .withOpacity(0.4),
+                                                    backgroundColor:
+                                                        AppColors.bgGradient2A,
+                                                    isDismissible: true,
+                                                    useSafeArea: true,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                25.r),
+                                                        topRight:
+                                                            Radius.circular(
+                                                                25.r),
+                                                      ),
+                                                    ),
+                                                    isScrollControlled: true,
+                                                    context: context,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return const NftSuccessBottomSheet();
+                                                    },
+                                                  ));
+                                                });
+                                              },
+                                            ));
+                                          },
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
                                 CustomSizedBoxHeight(height: 20),
+
                                 ///Profile list videos
                                 Expanded(
                                   child: ListView.builder(
@@ -84,9 +179,9 @@ class _ProfileViewState extends State<ProfileView> {
                                     },
                                   ),
                                 ),
-
                               ],
                             ))),
+
                     /// Profile image widget
                     const CircularProfile(),
                   ]),

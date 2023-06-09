@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game/Utils/color_constant.dart';
 import '../Utils/app_style.dart';
 import 'customtext.dart';
 
@@ -11,6 +12,7 @@ class CustomButton extends StatelessWidget {
   Color? color;
   double? height;
   double? width;
+  IconData? icon;
   TextStyle? AppStyle;
 
   CustomButton(
@@ -21,6 +23,7 @@ class CustomButton extends StatelessWidget {
       this.height= 53,
       this.width=310,
       this.color,
+      this.icon,
       this.AppStyle,
       this.image})
       : super(key: key);
@@ -53,6 +56,8 @@ class CustomButton extends StatelessWidget {
               ),
               CustomText(
                   textStyle: AppStyle, title: title),
+              SizedBox(width: 6),
+              Icon(icon, color: AppColors.whiteA700, size: 12),
             ],
           ),
         ),

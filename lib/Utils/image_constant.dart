@@ -22,6 +22,18 @@ class AppImages {
   static String john = 'assets/images/john.png';
   static String drawerBackground = 'assets/images/background2.png';
   static String backgroundDra = 'assets/images/backgroundDra.png';
-  static String profileBackG= 'assets/images/gamepic.png';
-  static String profilepic= 'assets/images/dog.png';
+  static String profileBackG = 'assets/images/gamepic.png';
+  static String profilepic = 'assets/images/dog.png';
+  static String settingprofile = 'assets/images/settingprofile.png';
+  static String logo = 'assets/images/logo.svg';
+  static String logopng = 'assets/images/logo.png';
+  static String avatar76 = 'assets/images/avatar76.png';
+  static String profilecover = 'assets/images/profilecover.png';
+  static String success = 'assets/images/success.png';
+  static String gamingImage1 = 'assets/images/cuter.png';
+  static String gamingImage2 = 'assets/images/crCutter.png';
+  static String gamingImage3 = 'assets/images/gaming.png';
+  static String nft = 'assets/images/nft.png';
+  static String donationSuccess = 'assets/images/donationSuccess.png';
+  static String ntfSuccess = 'assets/images/spaning.png';
 }
