@@ -14,6 +14,8 @@ import 'View/CreateALiveStream/createStream_view.dart';
 import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
 import 'View/Favorites/favorites_View.dart';
+import 'View/Followers/followers.dart';
+import 'View/content/content_View.dart';
 
 class DrawerWithNavBar extends StatefulWidget {
   Widget screen;
@@ -95,7 +97,9 @@ class _DrawerWithNavBarState extends State<DrawerWithNavBar> {
                   SizedBox(
                     width: 120,
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          PersistentNavBarNavigator.pushNewScreen(context, screen: const Followers());
+                        },
                         icon: Row(
                           children: [
                             const Icon(Icons.person_add_alt_rounded),
@@ -146,7 +150,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       DashBoardView(onTapDrawer: () {
         z.toggle!();
       }),
-      const Center(child: Text('data')),
+       ContentView(),
       const CreateStream(),
       const Center(child: Text('data')),
       const FavoritesView(),

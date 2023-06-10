@@ -72,7 +72,7 @@ class FavoritesView extends StatelessWidget {
                 child: ListView.builder(
                   padding: const EdgeInsets.only(top: 20),
                   physics: const BouncingScrollPhysics(),
-                  itemCount: 5,
+                  itemCount: 2,
                   itemBuilder: (context, index) {
                     return Container(
                       width: 340,
