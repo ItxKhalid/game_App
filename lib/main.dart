@@ -7,6 +7,7 @@ import 'Provider/settings_provider.dart';
 import 'View/CreateALiveStream/createStream_view.dart';
 import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
+import 'View/Followers/followers.dart';
 import 'View/LiveStreamResCreator/livestream_rescreatorView.dart';
 import 'View/LiveStream_ActiveScreen/livestream_activescreenView.dart';
 import 'View/Login/login_View.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: const LiveStreamResCreator(),
+              home: const Followers(),
             ));
       },
     );
