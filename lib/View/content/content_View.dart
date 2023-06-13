@@ -13,9 +13,14 @@ import '../../widgets/customButton.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../../widgets/customtext.dart';
+import '../Donation/BottomSheet.dart';
 import '../Drawer/Drawer_view.dart';
 import '../Profile/profile_view.dart';
 import '../Settings/settings_view.dart';
+import 'BottomSheet/BottomSheet_View.dart';
+import 'BottomSheet/EditNFT.dart';
+import 'BottomSheet/EditVideo.dart';
+import 'BottomSheet/selectedContainerVertical.dart';
 
 class ContentView extends StatelessWidget {
    ContentView({Key? key}) : super(key: key);
@@ -43,29 +48,33 @@ class ContentView extends StatelessWidget {
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomSizedBoxHeight(height: 35),
-                  CustomAppBar(
-                    notificationOntap: (){},
-                    profileOntap: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfileView(),
-                        ),
-                      );
-                    },
-                    settingOntap: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SettingsView(),
-                        ),
-                      );
-                    },
-                    searchOntap: () {},
-                    drawerOntap: (){
-                      z.toggle!();
-                    },
+                  AppBar(
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    leadingWidth: double.infinity,
+                    leading: CustomAppBar(
+                      searchOntap: () {},
+                      settingOntap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SettingsView(),
+                          ),
+                        );
+                      },
+                      profileOntap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileView(),
+                          ),
+                        );
+                      },
+                      notificationOntap: () {},
+                      drawerOntap: () {
+                        z.toggle!();
+                      },
+                    ),
                   ),
                   CustomSizedBoxHeight(height: 35),
                   Padding(
@@ -81,7 +90,26 @@ class ContentView extends StatelessWidget {
                           width: 110,
                           height: 28,
                           title: '+ NFT collection',
-                          ontap: () {},
+                          ontap: () {
+                            showModalBottomSheet(
+                              barrierColor:
+                              AppColors.gray.withOpacity(0.4),
+                              backgroundColor: AppColors.bgGradient2A,
+                              isDismissible: true,
+                              useSafeArea: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25.r),
+                                  topRight: Radius.circular(25.r),
+                                ),
+                              ),
+                              isScrollControlled: true,
+                              context: context,
+                              builder: (BuildContext context) {
+                                return BottomSheetContentCreateNFt();
+                              },
+                            );
+                          },
                           AppStyle: AppStyle.textStyle12regularWhite,
                           gradient: LinearGradient(
                               begin: Alignment.topLeft,
@@ -152,7 +180,8 @@ class ContentView extends StatelessWidget {
                             controller: tabController,
                             children:  [
                               ///Vides
-                              Expanded(
+                              SizedBox(
+                                height: 460,
                                 child: ListView.builder(
                                   padding: EdgeInsets.zero,
                                   physics: const BouncingScrollPhysics(),
@@ -193,7 +222,26 @@ class ContentView extends StatelessWidget {
                                               top: 12.h,
                                               right: 11.w,
                                               child: IconButtonWidget(
-                                                ontap: (){},
+                                                ontap: () {
+                                                  showModalBottomSheet(
+                                                    barrierColor:
+                                                    AppColors.gray.withOpacity(0.4),
+                                                    backgroundColor: AppColors.bgGradient2A,
+                                                    isDismissible: true,
+                                                    useSafeArea: true,
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.only(
+                                                        topLeft: Radius.circular(25.r),
+                                                        topRight: Radius.circular(25.r),
+                                                      ),
+                                                    ),
+                                                    isScrollControlled: true,
+                                                    context: context,
+                                                    builder: (BuildContext context) {
+                                                      return BottomSheetContentEditVideo();
+                                                    },
+                                                  );
+                                                },
                                                 height: 37,
                                                 width: 37,
                                                 containerColor: AppColors.tagCancel.withOpacity(0.7),
@@ -240,7 +288,8 @@ class ContentView extends StatelessWidget {
                                 ),
                               ),
                               ///Lives
-                              Expanded(
+                              SizedBox(
+                                height: 460,
                                 child: ListView.builder(
                                   padding: EdgeInsets.zero,
                                   physics: const BouncingScrollPhysics(),
@@ -281,7 +330,9 @@ class ContentView extends StatelessWidget {
                                               top: 12.h,
                                               right: 11.w,
                                               child: IconButtonWidget(
-                                                ontap: (){},
+                                                ontap: (){
+                                                  editStreamAlertDialog(context);
+                                                },
                                                 height: 37,
                                                 width: 37,
                                                 containerColor: AppColors.tagCancel.withOpacity(0.7),
@@ -385,7 +436,9 @@ class ContentView extends StatelessWidget {
                                         controller: tabController,
                                         children:  [
                                           ///Created
-                                          Expanded(
+                                          SizedBox(
+                                            // height: 480,
+                                            height: MediaQuery.of(context).size.height * 0.4,
                                             child: ListView.builder(
                                               padding: EdgeInsets.zero,
                                               physics: const BouncingScrollPhysics(),
@@ -455,7 +508,26 @@ class ContentView extends StatelessWidget {
                                                           top: 12.h,
                                                           right: 11.w,
                                                           child: IconButtonWidget(
-                                                            ontap: (){},
+                                                            ontap: () {
+                                                              showModalBottomSheet(
+                                                                barrierColor:
+                                                                AppColors.gray.withOpacity(0.4),
+                                                                backgroundColor: AppColors.bgGradient2A,
+                                                                isDismissible: true,
+                                                                useSafeArea: true,
+                                                                shape: RoundedRectangleBorder(
+                                                                  borderRadius: BorderRadius.only(
+                                                                    topLeft: Radius.circular(25.r),
+                                                                    topRight: Radius.circular(25.r),
+                                                                  ),
+                                                                ),
+                                                                isScrollControlled: true,
+                                                                context: context,
+                                                                builder: (BuildContext context) {
+                                                                  return BottomSheetContentEditNFt();
+                                                                },
+                                                              );
+                                                            },
                                                             height: 37,
                                                             width: 37,
                                                             containerColor: AppColors.tagCancel.withOpacity(0.7),
@@ -466,7 +538,26 @@ class ContentView extends StatelessWidget {
                                                           top: 12.h,
                                                           right: 55.w,
                                                           child: IconButtonWidget(
-                                                            ontap: (){},
+                                                            ontap: () {
+                                                              showModalBottomSheet(
+                                                                barrierColor:
+                                                                AppColors.gray.withOpacity(0.4),
+                                                                backgroundColor: AppColors.bgGradient2A,
+                                                                isDismissible: true,
+                                                                useSafeArea: true,
+                                                                shape: RoundedRectangleBorder(
+                                                                  borderRadius: BorderRadius.only(
+                                                                    topLeft: Radius.circular(25.r),
+                                                                    topRight: Radius.circular(25.r),
+                                                                  ),
+                                                                ),
+                                                                isScrollControlled: true,
+                                                                context: context,
+                                                                builder: (BuildContext context) {
+                                                                  return BottomSheetContentCreateNFt();
+                                                                },
+                                                              );
+                                                            },
                                                             height: 37,
                                                             width: 37,
                                                             containerColor: AppColors.tagCancel.withOpacity(0.7),
@@ -502,7 +593,9 @@ class ContentView extends StatelessWidget {
                                             ),
                                           ),
                                           ///Holding
-                                          Expanded(
+                                          SizedBox(
+                                            // height: 480,
+                                            height: MediaQuery.of(context).size.height * 0.4,
                                             child: ListView.builder(
                                               padding: EdgeInsets.zero,
                                               physics: const BouncingScrollPhysics(),
@@ -598,7 +691,6 @@ class ContentView extends StatelessWidget {
                                   ],
                                 ),
                               ),
-
                             ],
                           ),
                         ),
@@ -609,4 +701,103 @@ class ContentView extends StatelessWidget {
                 ],),
             )));
   }
+
+   void editStreamAlertDialog(BuildContext context) {
+     showDialog(
+       context: context,
+       builder: (BuildContext context) {
+         return AlertDialog(
+           shadowColor: AppColors.bgGradient1,
+           backgroundColor: AppColors.bgGradient3,
+           contentPadding: const EdgeInsets.all(0),
+           content: SizedBox(
+             height: 420.h,
+             width: 380.w,
+             child: Padding(
+               padding: EdgeInsets.symmetric(horizontal: 14.w),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 mainAxisAlignment: MainAxisAlignment.start,
+                 children: [
+                   Padding(
+                     padding: const EdgeInsets.all(10.0),
+                     child: Align(
+                       alignment: Alignment.topRight,
+                       child: Container(
+                         height: 31,
+                         width: 31,
+                         decoration: BoxDecoration(
+                           border: Border.all(color: AppColors.gray75),
+                           shape: BoxShape.circle,
+                         ),
+                         child: IconButtonWidget(
+                           ontap: () {
+                             Navigator.pop(context);
+                           },
+                           height: 31,
+                           width: 31,
+                           containerColor: AppColors.bgGradient2,
+                           widget: Icon(
+                             Icons.clear,
+                             color: AppColors.mainColor,
+                             size: 18,
+                           ),
+                         ),
+                       ),
+                     ),
+                   ),
+                   Padding(
+                     padding:
+                     const EdgeInsets.symmetric(horizontal: 23),
+                     child: Align(
+                       alignment: Alignment.center,
+                       child: Text(
+                         'Edit Live',
+                         style: TextStyle(
+                           fontSize: 19,
+                           fontWeight: FontWeight.w700,
+                           foreground: Paint()
+                             ..shader = LinearGradient(
+                               colors: [
+                                 AppColors.indigo,
+                                 AppColors.mainColor,
+                               ],
+                             ).createShader(
+                               const Rect.fromLTWH(20.0, 0.0, 120.0, 70.0),
+                             ),
+                         ),
+                       ),
+                     ),
+                   ),
+                   CustomSizedBoxHeight(height: 30),
+                   CustomText(textStyle: AppStyle.textStyle12Regular,
+                       title: 'Visibility'
+                   ),
+                   CustomSizedBoxHeight(height: 10),
+                   SelectableContainersContentVertical(),
+                   CustomSizedBoxHeight(height: 30),
+                   CustomButton(
+                     title: 'Create',
+                     ontap: (){
+                       Navigator.pop(context);
+                     },
+                     AppStyle: AppStyle.textStyle12regularWhite,
+                     gradient: LinearGradient(
+                         begin: Alignment.topLeft,
+                         end: Alignment.bottomRight,
+                         colors: [
+                           AppColors.indigoAccent,
+                           AppColors.mainColor,
+                           AppColors.mainColor,
+                         ]),
+                   ),
+                 ],
+               ),
+             ),
+           ),
+         );
+
+       },
+     );
+   }
 }

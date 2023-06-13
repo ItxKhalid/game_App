@@ -50,6 +50,9 @@ dependencies:
   flutter_chat_ui:
   mime:
   convex_bottom_bar: ^3.2.0
+  dotted_border: ^2.0.0+3
+  file_picker:
+  chart_sparkline: ^1.0.13
 
 dev_dependencies:
   flutter_test:

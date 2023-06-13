@@ -110,6 +110,10 @@ class _CreateStreamState extends State<CreateStream> {
                     title:
                     'Tags can be useful if content in your stream is commonly misspelled'),
                 CustomSizedBoxHeight(height: 15),
+                CustomText(textStyle: AppStyle.textStyle12Regular,
+                    title: 'Category'
+                ),
+                CustomSizedBoxHeight(height: 5),
                 DropDown(),
                 CustomText(
                     textAlign: TextAlign.start,

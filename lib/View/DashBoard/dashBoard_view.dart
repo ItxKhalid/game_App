@@ -11,14 +11,17 @@ import 'package:game/View/Profile/profile_view.dart';
 import 'package:game/View/Settings/settings_view.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
 import 'package:game/widgets/customtext.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../Utils/color_constant.dart';
 import '../../widgets/GradientTextWidget.dart';
 import '../../widgets/custom_appbar.dart';
+import '../StreamComments/StreamComments_View.dart';
 import 'Components/topStreams_widget.dart';
 import 'Components/topVideos_widget.dart';
 
 class DashBoardView extends StatefulWidget {
   Function() onTapDrawer;
+
   DashBoardView({required this.onTapDrawer});
 
   @override
@@ -48,38 +51,43 @@ class _DashBoardViewState extends State<DashBoardView> {
             AppColors.bgGradient2,
             AppColors.bgGradient2,
             AppColors.bgGradient1,
-          ])
-      ),
+          ])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Column(
           children: [
-            CustomSizedBoxHeight(height: 35),
-            CustomAppBar(
-              notificationOntap: (){},
-              profileOntap: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ProfileView(),
-                  ),
-                );
-              },
-              settingOntap: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SettingsView(),
-                  ),
-                );
-              },
-              searchOntap: () {},
-              drawerOntap: widget.onTapDrawer,
+            AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leadingWidth: double.infinity,
+              leading: CustomAppBar(
+                searchOntap: () {},
+                settingOntap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsView(),
+                    ),
+                  );
+                },
+                profileOntap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfileView(),
+                    ),
+                  );
+                },
+                notificationOntap: () {},
+                drawerOntap: () {
+                  z.toggle!();
+                },
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: SizedBox(
-                height: 620,
+                height: 610,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   padding: EdgeInsets.zero,
@@ -177,7 +185,15 @@ class _DashBoardViewState extends State<DashBoardView> {
                         scrollDirection: Axis.horizontal,
                         itemCount: 5,
                         itemBuilder: (context, index) {
-                          return const TopStreamsListView();
+                          return GestureDetector(
+                              onTap: () {
+                                PersistentNavBarNavigator.pushNewScreen(
+                                    context,
+                                    screen: const StreamComments(),
+                                  withNavBar: false
+                                );
+                              },
+                              child: const TopStreamsListView());
                         },
                       ),
                     ),

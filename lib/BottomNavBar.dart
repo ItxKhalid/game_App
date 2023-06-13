@@ -1,4 +1,3 @@
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,13 +7,19 @@ import 'package:game/Utils/app_style.dart';
 import 'package:game/Utils/color_constant.dart';
 import 'package:game/Utils/image_constant.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
+import 'package:game/widgets/Sizebox/sizedboxwidth.dart';
+import 'package:game/widgets/custom_icon_button.dart';
 import 'package:game/widgets/customtext.dart';
+import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'View/Analytics/analytics_view.dart';
 import 'View/CreateALiveStream/createStream_view.dart';
 import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
 import 'View/Favorites/favorites_View.dart';
 import 'View/Followers/followers.dart';
+import 'View/Messages/Messages_View.dart';
+import 'View/UploadVideoS/UploadVideo_View.dart';
 import 'View/content/content_View.dart';
 
 class DrawerWithNavBar extends StatefulWidget {
@@ -82,7 +87,9 @@ class _DrawerWithNavBarState extends State<DrawerWithNavBar> {
                   SizedBox(
                     width: 120,
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(()=> const AnalyticsScreen());
+                        },
                         icon: Row(
                           children: [
                             const Icon(Icons.analytics),
@@ -98,7 +105,8 @@ class _DrawerWithNavBarState extends State<DrawerWithNavBar> {
                     width: 120,
                     child: IconButton(
                         onPressed: () {
-                          PersistentNavBarNavigator.pushNewScreen(context, screen: const Followers());
+                          PersistentNavBarNavigator.pushNewScreen(context,
+                              screen: const Followers());
                         },
                         icon: Row(
                           children: [
@@ -143,16 +151,17 @@ class DashBoardScreen extends StatefulWidget {
 }
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
-  final controller = PersistentTabController(initialIndex: 2);
+  final controller = PersistentTabController(initialIndex: 0);
+  bool isVisible2 = false;
 
   List<Widget> _screens() {
     return [
       DashBoardView(onTapDrawer: () {
         z.toggle!();
       }),
-       ContentView(),
+      ContentView(),
       const CreateStream(),
-      const Center(child: Text('data')),
+      const MessagesView(),
       const FavoritesView(),
       // AllUserScreen(),
       // ProfileScreen()
@@ -231,67 +240,81 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       ),
       PersistentBottomNavBarItem(
           opacity: 0.00000001,
-          icon: Container(
-              height: 40,
-              width: 45,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.mainColor,
-                      blurRadius: 30.0, // soften the shadow
-                      spreadRadius: 4.0, //extend the shadow
-                      offset: const Offset(
-                        0.0, // Move to right 10  horizontally
-                        10.0, // Move to bottom 10 Vertically
-                      ),
-                    )
-                  ],
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppColors.mainColor,
-                        AppColors.mainColor,
-                        AppColors.indigo,
-                      ]),
-                  borderRadius: BorderRadius.circular(100)),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(
-                  AppImages.imgVideocam,
-                ),
-              )),
+          icon: GestureDetector(
+            onTap: () {
+              setState(() {
+                isVisible2 = !isVisible2;
+              });
+            },
+            child: Container(
+                height: 40,
+                width: 45,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.mainColor,
+                        blurRadius: 30.0, // soften the shadow
+                        spreadRadius: 4.0, //extend the shadow
+                        offset: const Offset(
+                          0.0, // Move to right 10  horizontally
+                          10.0, // Move to bottom 10 Vertically
+                        ),
+                      )
+                    ],
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          AppColors.mainColor,
+                          AppColors.mainColor,
+                          AppColors.indigo,
+                        ]),
+                    borderRadius: BorderRadius.circular(100)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(
+                    AppImages.imgVideocam,
+                  ),
+                )),
+          ),
           activeColorPrimary: Colors.white,
-          inactiveIcon: Container(
-              height: 40,
-              width: 45,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.mainColor,
-                      blurRadius: 30.0, // soften the shadow
-                      spreadRadius: 4.0, //extend the shadow
-                      offset: const Offset(
-                        0.0, // Move to right 10  horizontally
-                        10.0, // Move to bottom 10 Vertically
-                      ),
-                    )
-                  ],
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppColors.mainColor,
-                        AppColors.mainColor,
-                        AppColors.indigo,
-                      ]),
-                  borderRadius: BorderRadius.circular(100)),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(
-                  AppImages.imgVideocam,
-                ),
-              )),
+          inactiveIcon: GestureDetector(
+            onTap: () {
+              setState(() {
+                isVisible2 = !isVisible2;
+              });
+            },
+            child: Container(
+                height: 40,
+                width: 45,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.mainColor,
+                        blurRadius: 30.0, // soften the shadow
+                        spreadRadius: 4.0, //extend the shadow
+                        offset: const Offset(
+                          0.0, // Move to right 10  horizontally
+                          10.0, // Move to bottom 10 Vertically
+                        ),
+                      )
+                    ],
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          AppColors.mainColor,
+                          AppColors.mainColor,
+                          AppColors.indigo,
+                        ]),
+                    borderRadius: BorderRadius.circular(100)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(
+                    AppImages.imgVideocam,
+                  ),
+                )),
+          ),
           activeColorSecondary: Colors.white),
       PersistentBottomNavBarItem(
         opacity: 0.00000001,
@@ -369,50 +392,93 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     return DrawerWithNavBar(
-        screen: PersistentTabView(
-      navBarHeight: 60,
-      context,
-      screens: _screens(),
-      items: _navbarItem(),
-      backgroundColor: AppColors.bgGradient1,
-      controller: controller,
-      navBarStyle: NavBarStyle.style6,
-      decoration: NavBarDecoration(borderRadius: BorderRadius.circular(1)),
-      stateManagement: true,
-    ));
+      screen: Scaffold(
+        body: z.toggle != false
+            ? Stack(
+                children: [
+                  PersistentTabView(
+                    navBarHeight: 60,
+                    context,
+                    screens: _screens(),
+                    items: _navbarItem(),
+                    backgroundColor: AppColors.bgGradient1,
+                    controller: controller,
+                    navBarStyle: NavBarStyle.style6,
+                    decoration: NavBarDecoration(
+                        borderRadius: BorderRadius.circular(1)),
+                    stateManagement: true,
+                  ),
+                  Positioned(
+                    bottom: 60,
+                    right: 118,
+                    child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Visibility(
+                          visible: isVisible2,
+                          maintainAnimation: true,
+                          maintainSize: true,
+                          maintainState: true,
+                          child: Row(
+                            children: [
+                              IconButtonWidget(
+                                ontap: () {
+                                  PersistentNavBarNavigator.pushNewScreen(
+                                      context,
+                                      screen: const CreateStream(),
+                                      withNavBar: true);
+                                },
+                                width: 44,
+                                height: 44,
+                                widget: Image.asset(AppImages.streamIcon),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    AppColors.mainColor,
+                                    AppColors.indigoAccent,
+                                  ],
+                                ),
+                              ),
+                              CustomSizedBoxWidth(width: 35),
+                              IconButtonWidget(
+                                ontap: () {
+                                  PersistentNavBarNavigator.pushNewScreen(
+                                      context,
+                                      screen: UploadVideoView(),
+                                      withNavBar: true);
+                                },
+                                width: 44,
+                                height: 44,
+                                widget: SvgPicture.asset(AppImages.uploadsvg),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    AppColors.mainColor,
+                                    AppColors.indigoAccent,
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
+                  ),
+                ],
+              )
+            : DrawerWithNavBar(
+                screen: PersistentTabView(
+                navBarHeight: 60,
+                context,
+                screens: _screens(),
+                items: _navbarItem(),
+                backgroundColor: AppColors.bgGradient1,
+                controller: controller,
+                navBarStyle: NavBarStyle.style6,
+                decoration:
+                    NavBarDecoration(borderRadius: BorderRadius.circular(1)),
+                stateManagement: true,
+              )),
+      ),
+    );
   }
 }
-// class HelloConvexAppBar extends StatefulWidget {
-//   @override
-//   State<HelloConvexAppBar> createState() => _HelloConvexAppBarState();
-// }
-//
-// class _HelloConvexAppBarState extends State<HelloConvexAppBar> {
-//
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     bool isTap = false ;
-//     return Scaffold(
-//       body: Center(
-//           child: TextButton(
-//             child: Text('Click to show full example'),
-//             onPressed: () => Navigator.of(context).pushNamed('/bar'),
-//           )),
-//       bottomNavigationBar: ConvexAppBar(
-//         style: TabStyle.react,
-//         backgroundColor: Colors.indigo,
-//         shadowColor: Colors.transparent,
-//         curve: Curves.decelerate,
-//         curveSize: 300,
-//         items: [
-//           TabItem(icon:SvgPicture.asset(AppImages.imgSearch)),
-//           TabItem(icon: Container()),
-//           TabItem(icon: Icons.assessment),
-//         ],
-//         initialActiveIndex: 1,
-//         onTap: (int i) => print('click index=$i'),
-//       ),
-//     );
-//   }
-// }

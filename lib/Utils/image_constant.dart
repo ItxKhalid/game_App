@@ -39,8 +39,11 @@ class AppImages {
   static String Vectorsvg = 'assets/images/Vector.svg';
   static String nftexport = 'assets/images/nftexport.svg';
   static String expandicon = 'assets/images/expandicon.svg';
+  static String uploadsvg = 'assets/images/uploadsvg.svg';
   static String expandvctr = 'assets/images/Vector.png';
+  static String streamIcon = 'assets/images/streamIcon.png';
   static String livestream = 'assets/images/livestream.png';
   static String livestream1 = 'assets/images/livestream1.png';
   static String streamcomnts = 'assets/images/streamcomnts.png';
+  static String gamebg = 'assets/images/gamebg.png';
 }

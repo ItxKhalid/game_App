@@ -80,6 +80,11 @@ class AppStyle {
       fontSize: 9.sp,
       fontFamily: AppConstant.interMedium,
       fontWeight: FontWeight.w500);
+  static TextStyle textStyle9SemiBoldOffWhite = TextStyle(
+      color: AppColors.offwhite,
+      fontSize: 9.sp,
+      fontFamily: AppConstant.interMedium,
+      fontWeight: FontWeight.w500);
   static TextStyle textStyle10Regular = TextStyle(
       color: AppColors.whiteA700,
       fontSize: 10.sp,

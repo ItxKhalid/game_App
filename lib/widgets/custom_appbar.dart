@@ -23,6 +23,7 @@ class CustomAppBar extends StatelessWidget {
       this.settingOntap})
       : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Row(

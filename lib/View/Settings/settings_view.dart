@@ -1,29 +1,24 @@
 import 'dart:io';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:game/BottomNavBar.dart';
 import 'package:game/Provider/settings_provider.dart';
 import 'package:game/View/Profile/profile_view.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
-import 'package:game/widgets/customtext.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:game/Utils/image_constant.dart';
 import 'package:game/widgets/custom_appbar.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+
 import '../../Utils/app_style.dart';
 import '../../Utils/color_constant.dart';
 import '../../widgets/CustomLabel.dart';
-import '../../widgets/CustomTextfieldLabel.dart';
 import '../../widgets/customButton.dart';
-import '../../widgets/custom_icon_button.dart';
 import '../../widgets/custom_text_form_field.dart';
 import '../Drawer/Drawer_view.dart';
 import 'Components/avatar_row.dart';
 import 'Components/profile_cover.dart';
-import 'Components/saveChanges.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);

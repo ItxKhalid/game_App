@@ -88,7 +88,6 @@ class _ProfileViewState extends State<ProfileView> {
                               children: [
                                 ///All details
                                 const ProfileDetails(),
-
                                 ///All Round Buttons
                                 RoundButtonProfile(
                                   onTapFollow: () {},
@@ -191,7 +190,6 @@ class _ProfileViewState extends State<ProfileView> {
       ),
     );
   }
-
   /// Get from gallery
   _getFromGallery() async {
     PickedFile? pickedFile = await ImagePicker().getImage(
