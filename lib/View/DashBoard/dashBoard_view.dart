@@ -1,8 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_zoom_drawer/config.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:game/Utils/app_style.dart';
 import 'package:game/Utils/image_constant.dart';
 import 'package:game/View/DashBoard/Components/CarouselSlider_container.dart';
@@ -11,6 +8,7 @@ import 'package:game/View/Profile/profile_view.dart';
 import 'package:game/View/Settings/settings_view.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
 import 'package:game/widgets/customtext.dart';
+import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../Utils/color_constant.dart';
 import '../../widgets/GradientTextWidget.dart';
@@ -81,13 +79,14 @@ class _DashBoardViewState extends State<DashBoardView> {
                 notificationOntap: () {},
                 drawerOntap: () {
                   z.toggle!();
+                  Get.offAll(context);
                 },
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: SizedBox(
-                height: 610,
+                height: MediaQuery.of(context).size.height *0.85,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   padding: EdgeInsets.zero,

@@ -12,6 +12,7 @@ class AppImages {
   static String aibot = 'assets/images/image_not_found.png';
   static String backLogin = 'assets/images/baackground.png';
   static String backLoginll = 'assets/images/backllll.png';
+  static String newbg = 'assets/images/newbg.png';
   static String logoname = 'assets/images/logoname.png';
   static String metamask = 'assets/images/metamaskpng.png';
   static String pubg = 'assets/images/pubg.png';
@@ -37,9 +38,11 @@ class AppImages {
   static String donationSuccess = 'assets/images/donationSuccess.png';
   static String ntfSuccess = 'assets/images/spaning.png';
   static String Vectorsvg = 'assets/images/Vector.svg';
+  static String searchSvg = 'assets/images/search.svg';
   static String nftexport = 'assets/images/nftexport.svg';
   static String expandicon = 'assets/images/expandicon.svg';
   static String uploadsvg = 'assets/images/uploadsvg.svg';
+  static String collapsesvg = 'assets/images/collapse.svg';
   static String expandvctr = 'assets/images/Vector.png';
   static String streamIcon = 'assets/images/streamIcon.png';
   static String livestream = 'assets/images/livestream.png';

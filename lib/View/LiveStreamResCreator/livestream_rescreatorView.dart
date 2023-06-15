@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:game/Utils/app_style.dart';
 import 'package:game/Utils/color_constant.dart';
 import 'package:game/Utils/image_constant.dart';
@@ -51,18 +52,25 @@ class _LiveStreamResCreatorState extends State<LiveStreamResCreator> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          height: 40.h,
-                          width: 40.w,
-                          decoration: BoxDecoration(
-                            color: AppColors.backbutton,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              color: AppColors.iconcolor,
-                              size: 20.w,
+                        GestureDetector(
+                          onTap: (){
+                            Get.back();
+                          },
+                          child: Container(
+                            height: 40.h,
+                            width: 40.w,
+                            decoration: BoxDecoration(
+                              color: AppColors.backbutton.withOpacity(0.5),
+                              shape: BoxShape.circle,
+                                border: Border.all(color: AppColors.mainColor)
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Icon(
+                                Icons.arrow_back_ios,
+                                color: AppColors.iconcolor,
+                                size: 20.w,
+                              ),
                             ),
                           ),
                         ),
@@ -76,11 +84,12 @@ class _LiveStreamResCreatorState extends State<LiveStreamResCreator> {
                             decoration: BoxDecoration(
                               color: AppColors.backbutton,
                               shape: BoxShape.circle,
+                                border: Border.all(color: AppColors.mainColor)
                             ),
                             child: Center(
                                 child: Image.asset(
                               AppImages.expandvctr,
-                              height: 25.h,
+                              height: 18.h,
                             )),
                           ),
                         ),

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import '../../Utils/AppConstant.dart';
 import '../../Utils/app_style.dart';
 import '../../Utils/color_constant.dart';
 import '../../Utils/image_constant.dart';
-import '../../widgets/GradientTextWidget.dart';
 import '../../widgets/Sizebox/sizedboxheight.dart';
 import '../../widgets/Sizebox/sizedboxwidth.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../../widgets/customtext.dart';
+import '../StreamComments/StreamComments_View.dart';
 
 class LiveStreamActiveScreen extends StatefulWidget {
   const LiveStreamActiveScreen({super.key});
@@ -36,6 +38,11 @@ class _LiveStreamActiveScreenState extends State<LiveStreamActiveScreen> {
     'Emma',
     'Michael',
   ];
+  final List<bool> isHide = [
+    true,
+    false,
+    false,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -50,23 +57,30 @@ class _LiveStreamActiveScreenState extends State<LiveStreamActiveScreen> {
               fit: BoxFit.fill,
             )),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 40.h,
-                      width: 40.w,
-                      decoration: BoxDecoration(
-                        color: AppColors.backbutton,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          color: AppColors.iconcolor,
-                          size: 20.w,
+                    GestureDetector(
+                      onTap: (){
+                        Get.offAll(context);
+                      },
+                      child: Container(
+                        height: 40.h,
+                        width: 40.w,
+                        decoration: BoxDecoration(
+                            color: AppColors.backbutton.withOpacity(0.5),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: AppColors.gray75)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: AppColors.iconcolor,
+                            size: 20.w,
+                          ),
                         ),
                       ),
                     ),
@@ -91,36 +105,45 @@ class _LiveStreamActiveScreenState extends State<LiveStreamActiveScreen> {
                         ),
                       ],
                     ),
-                    Container(
-                      height: 28.h,
-                      width: 87.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(3),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                Color(0xff2B59FE),
-                                Color(0xff3485FF),
-                              ])),
-                      child: Center(
-                        child: CustomText(
-                            textStyle: AppStyle.textStyle11SemiBoldWhite600,
-                            title: 'Follow'),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Container(
+                        height: 28.h,
+                        width: 87.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3),
+                            gradient: const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Color(0xff2B59FE),
+                                  Color(0xff3485FF),
+                                ])),
+                        child: Center(
+                          child: CustomText(
+                              textStyle: AppStyle.textStyle11SemiBoldWhite600,
+                              title: 'Follow'),
+                        ),
                       ),
                     ),
-                    Container(
-                      height: 40.h,
-                      width: 40.w,
-                      decoration: BoxDecoration(
-                        color: AppColors.backbutton,
-                        shape: BoxShape.circle,
+                    GestureDetector(
+                      onTap: (){
+                        Get.to(()=>const StreamComments());
+                      },
+                      child: Container(
+                        height: 40.h,
+                        width: 40.w,
+                        decoration: BoxDecoration(
+                          color: AppColors.backbutton.withOpacity(0.5),
+                          shape: BoxShape.circle,
+                            border: Border.all(color: AppColors.gray75)
+                        ),
+                        child: Center(
+                            child: SvgPicture.asset(
+                          AppImages.collapsesvg,
+                          height: 18.h,
+                        )),
                       ),
-                      child: Center(
-                          child: Image.asset(
-                        AppImages.expandvctr,
-                        height: 25.h,
-                      )),
                     ),
                   ]),
             ),
@@ -132,108 +155,109 @@ class _LiveStreamActiveScreenState extends State<LiveStreamActiveScreen> {
                 child: ListView.builder(
                     itemCount: 3,
                     reverse: true,
-                    physics: const BouncingScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                // width: 250.w,
-                                child: Container(
-                                  width: 228,
-                                  decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                          begin: Alignment.topLeft,
-                                          end: Alignment.bottomRight,
-                                          colors: [
-                                            AppColors.mainColor,
-                                            AppColors.indigoAccent,
-                                            AppColors.indigoAccent,
-                                          ]),
-                                      color: Theme.of(context)
-                                          .toggleableActiveColor,
-                                      borderRadius:
-                                      const BorderRadius.only(
-                                        topRight: Radius.circular(10),
-                                        // topLeft: Radius.circular(10),
-                                        bottomRight:
-                                        Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                      )),
-                                  child: ListTile(
-                                    leading: CircleAvatar(
-                                      backgroundImage: AssetImage('${images[index]}'),
-                                    ),
-                                    title: CustomText(
-                                        title: names[index],
-                                        textStyle: AppStyle.textStyle12regularWhite),
-                                    subtitle: CustomText(
-                                        title: message[index],
-                                        textStyle: AppStyle.textStyle9SemiBoldWhite),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              // width: 250.w,
+                              child: Container(
+                                width: 228,
+                                decoration: BoxDecoration(
+                                    gradient: isHide[index] ? LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: [
+                                          AppColors.mainColor.withOpacity(0.9),
+                                          AppColors.indigoAccent.withOpacity(0.8),
+                                          AppColors.indigoAccent.withOpacity(0.9),
+                                        ]) :LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          AppColors.mainColor.withOpacity(0.3),
+                                          AppColors.indigoAccent.withOpacity(0.8),
+                                          AppColors.indigoAccent.withOpacity(0.9),
+                                        ]),
+                                    color: Theme.of(context)
+                                        .toggleableActiveColor,
+                                    borderRadius:
+                                     BorderRadius.circular(30),),
+                                child: ListTile(
+                                  leading: CircleAvatar(
+                                    radius: 20,
+                                    backgroundImage: AssetImage('${images[index]}'),
                                   ),
+                                  title: CustomText(
+                                      title: names[index],
+                                      textStyle: AppStyle.textStyle12regularWhite),
+                                  subtitle: CustomText(
+                                      title: message[index],
+                                      textStyle: AppStyle.textStyle9SemiBoldWhite),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       );
                     }),
               ),
-              SizedBox(
-                // height: MediaQuery.of(context).size.height*0.044,
-                width: double.infinity,
-                child: Card(
-                  semanticContainer: true,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  // elevation: 2,
-                  // margin: EdgeInsets.all(7),
-                  color: AppColors.fieldUnActive,
-                  child: TextFormField(
-                    // autocorrect: true,
-                    // enableSuggestions: true,
-                    maxLines: 5,
-                    minLines: 1,
-                    textAlignVertical: TextAlignVertical.center,
-                    keyboardType: TextInputType.multiline,
-                    onChanged: (value) {
-                      setState(() {});
-                    },
-                    controller: msgtext,
-                    style: TextStyle(color: AppColors.whiteA700, fontSize: 14),
-                    decoration: InputDecoration(
-                      hintText: 'Type a message...',
-                      border: InputBorder.none,
-                      suffixIcon: msgtext.text.length != 0 ?Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: IconButtonWidget(
-                          ontap: () {},
-                          height: 35,
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              AppColors.mainColor,
-                              AppColors.indigoAccent,
-                            ],
+              SingleChildScrollView(
+                child: SizedBox(
+                  // height: MediaQuery.of(context).size.height*0.044,
+                  width: double.infinity,
+                  child: Card(
+                    semanticContainer: true,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    // elevation: 2,
+                    // margin: EdgeInsets.all(7),
+                    color: AppColors.fieldUnActive,
+                    child: TextFormField(
+                      // autocorrect: true,
+                      // enableSuggestions: true,
+                      maxLines: 5,
+                      minLines: 1,
+                      textAlignVertical: TextAlignVertical.center,
+                      keyboardType: TextInputType.multiline,
+                      onChanged: (value) {
+                        setState(() {});
+                      },
+                      controller: msgtext,
+                      style: TextStyle(color: AppColors.whiteA700, fontSize: 14),
+                      decoration: InputDecoration(
+                        hintText: 'Type a message...',
+                        border: InputBorder.none,
+                        suffixIcon: msgtext.text.length != 0 ?Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: IconButtonWidget(
+                            ontap: () {},
+                            height: 35,
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                AppColors.mainColor,
+                                AppColors.indigoAccent,
+                              ],
+                            ),
+                            width: 35,
+                            widget: const Icon(
+                              Icons.send,
+                              size: 18,
+                              color: Colors.white,
+                            ),
                           ),
-                          width: 35,
-                          widget: const Icon(
-                            Icons.send,
-                            size: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ) : Icon(Icons.emoji_emotions_outlined,color: AppColors.gray75,),
-                      contentPadding: const EdgeInsets.only(left: 10),
-                      hintStyle: TextStyle(
-                          color: const Color(0xff7C7C7C),
-                          fontWeight: FontWeight.w300,
-                          fontFamily: AppConstant.interMedium,
-                          fontSize: 15.sp),
+                        ) : Icon(Icons.emoji_emotions_outlined,color: AppColors.gray75,),
+                        contentPadding: const EdgeInsets.only(left: 10),
+                        hintStyle: TextStyle(
+                            color: const Color(0xff7C7C7C),
+                            fontWeight: FontWeight.w300,
+                            fontFamily: AppConstant.interMedium,
+                            fontSize: 15.sp),
+                      ),
                     ),
                   ),
                 ),

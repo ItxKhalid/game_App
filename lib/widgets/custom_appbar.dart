@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:game/Utils/image_constant.dart';
 import 'package:game/View/Settings/settings_view.dart';
 import 'package:game/widgets/Sizebox/sizedboxwidth.dart';
@@ -7,7 +8,7 @@ import '../../widgets/custom_icon_button.dart';
 import '../Utils/color_constant.dart';
 import '../View/Notification/Notification.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatefulWidget {
   Function()? drawerOntap;
   Function() searchOntap;
   Function()? notificationOntap;
@@ -23,7 +24,11 @@ class CustomAppBar extends StatelessWidget {
       this.settingOntap})
       : super(key: key);
 
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
 
+class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -31,7 +36,7 @@ class CustomAppBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 8, bottom: 8, left: 18),
           child: IconButtonWidget(
-            ontap: drawerOntap!,
+            ontap: widget.drawerOntap!,
             containerColor: Colors.deepOrange,
             height: 35,
             width: 35,
@@ -46,14 +51,10 @@ class CustomAppBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8),
           child: IconButtonWidget(
-            ontap: searchOntap,
+            ontap: widget.searchOntap,
             height: 35,
             width: 35,
-            widget: const Icon(
-              Icons.search,
-              size: 18,
-              color: Colors.white30,
-            ),
+            widget: SvgPicture.asset(AppImages.searchSvg)
           ),
         ),
         Padding(
@@ -83,7 +84,7 @@ class CustomAppBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 9, bottom: 9, right: 11),
           child: IconButtonWidget(
-            ontap: settingOntap!,
+            ontap: widget.settingOntap!,
             height: 35,
             gradient: const LinearGradient(
               end: Alignment.bottomCenter,
@@ -106,7 +107,7 @@ class CustomAppBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 18.0),
           child: IconButtonWidget(
-            ontap: profileOntap!,
+            ontap: widget.profileOntap!,
             height: 36,
             width: 40,
             widget: Image.asset(

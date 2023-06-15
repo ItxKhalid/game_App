@@ -1,14 +1,14 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:freestyle_speed_dial/freestyle_speed_dial.dart';
 import 'package:game/Utils/app_style.dart';
 import 'package:game/Utils/color_constant.dart';
 import 'package:game/Utils/image_constant.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
-import 'package:game/widgets/Sizebox/sizedboxwidth.dart';
-import 'package:game/widgets/custom_icon_button.dart';
 import 'package:game/widgets/customtext.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -37,15 +37,22 @@ class _DrawerWithNavBarState extends State<DrawerWithNavBar> {
     return ZoomDrawer(
       controller: z,
       borderRadius: 24,
-      clipMainScreen: true,
+      clipMainScreen: false,
       mainScreenTapClose: true,
+      androidCloseOnBackTap: false,
+      disableDragGesture: false,
+      mainScreenAbsorbPointer: false,
+      // menuScreenTapClose: true,
+      moveMenuScreen: true,
+      // shrinkMainScreen: true,
       // closeCurve: Curves.bounceInOut,
       style: DrawerStyle.defaultStyle,
       menuScreenWidth: double.infinity,
       showShadow: true,
       openCurve: Curves.easeInOutCubic,
       slideWidth: MediaQuery.of(context).size.width * 0.6,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 50),
+      reverseDuration: const Duration(milliseconds: 50),
       angle: 0.0,
       shadowLayer2Color: AppColors.textField.withOpacity(0.8),
       shadowLayer1Color: AppColors.bgGradient1.withOpacity(0.6),
@@ -72,7 +79,9 @@ class _DrawerWithNavBarState extends State<DrawerWithNavBar> {
                   SizedBox(
                     width: 120,
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => const DashBoardScreen());
+                        },
                         icon: Row(
                           children: [
                             const Icon(Icons.window_rounded),
@@ -88,11 +97,12 @@ class _DrawerWithNavBarState extends State<DrawerWithNavBar> {
                     width: 120,
                     child: IconButton(
                         onPressed: () {
-                          Get.to(()=> const AnalyticsScreen());
+                          Get.to(() => const AnalyticsScreen());
                         },
                         icon: Row(
                           children: [
-                            const Icon(Icons.analytics),
+                            SvgPicture.asset(AppImages.Vectorsvg,
+                                color: AppColors.whiteA700),
                             const SizedBox(width: 5),
                             CustomText(
                                 textStyle: AppStyle.textStyle14whiteSemiBold,
@@ -152,7 +162,6 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   final controller = PersistentTabController(initialIndex: 0);
-  bool isVisible2 = false;
 
   List<Widget> _screens() {
     return [
@@ -240,81 +249,67 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       ),
       PersistentBottomNavBarItem(
           opacity: 0.00000001,
-          icon: GestureDetector(
-            onTap: () {
-              setState(() {
-                isVisible2 = !isVisible2;
-              });
-            },
-            child: Container(
-                height: 40,
-                width: 45,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.mainColor,
-                        blurRadius: 30.0, // soften the shadow
-                        spreadRadius: 4.0, //extend the shadow
-                        offset: const Offset(
-                          0.0, // Move to right 10  horizontally
-                          10.0, // Move to bottom 10 Vertically
-                        ),
-                      )
-                    ],
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          AppColors.mainColor,
-                          AppColors.mainColor,
-                          AppColors.indigo,
-                        ]),
-                    borderRadius: BorderRadius.circular(100)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SvgPicture.asset(
-                    AppImages.imgVideocam,
-                  ),
-                )),
-          ),
+          icon: Container(
+              height: 40,
+              width: 45,
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.mainColor,
+                      blurRadius: 30.0, // soften the shadow
+                      spreadRadius: 4.0, //extend the shadow
+                      offset: const Offset(
+                        0.0, // Move to right 10  horizontally
+                        10.0, // Move to bottom 10 Vertically
+                      ),
+                    )
+                  ],
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        AppColors.mainColor,
+                        AppColors.mainColor,
+                        AppColors.indigo,
+                      ]),
+                  borderRadius: BorderRadius.circular(100)),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  AppImages.imgVideocam,
+                ),
+              )),
           activeColorPrimary: Colors.white,
-          inactiveIcon: GestureDetector(
-            onTap: () {
-              setState(() {
-                isVisible2 = !isVisible2;
-              });
-            },
-            child: Container(
-                height: 40,
-                width: 45,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.mainColor,
-                        blurRadius: 30.0, // soften the shadow
-                        spreadRadius: 4.0, //extend the shadow
-                        offset: const Offset(
-                          0.0, // Move to right 10  horizontally
-                          10.0, // Move to bottom 10 Vertically
-                        ),
-                      )
-                    ],
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          AppColors.mainColor,
-                          AppColors.mainColor,
-                          AppColors.indigo,
-                        ]),
-                    borderRadius: BorderRadius.circular(100)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SvgPicture.asset(
-                    AppImages.imgVideocam,
-                  ),
-                )),
-          ),
+          inactiveIcon: Container(
+              height: 40,
+              width: 45,
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.mainColor,
+                      blurRadius: 30.0, // soften the shadow
+                      spreadRadius: 4.0, //extend the shadow
+                      offset: const Offset(
+                        0.0, // Move to right 10  horizontally
+                        10.0, // Move to bottom 10 Vertically
+                      ),
+                    )
+                  ],
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        AppColors.mainColor,
+                        AppColors.mainColor,
+                        AppColors.indigo,
+                      ]),
+                  borderRadius: BorderRadius.circular(100)),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  AppImages.imgVideocam,
+                ),
+              )),
           activeColorSecondary: Colors.white),
       PersistentBottomNavBarItem(
         opacity: 0.00000001,
@@ -393,91 +388,75 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   Widget build(BuildContext context) {
     return DrawerWithNavBar(
       screen: Scaffold(
-        body: z.toggle != false
-            ? Stack(
-                children: [
-                  PersistentTabView(
-                    navBarHeight: 60,
-                    context,
-                    screens: _screens(),
-                    items: _navbarItem(),
-                    backgroundColor: AppColors.bgGradient1,
-                    controller: controller,
-                    navBarStyle: NavBarStyle.style6,
-                    decoration: NavBarDecoration(
-                        borderRadius: BorderRadius.circular(1)),
-                    stateManagement: true,
-                  ),
-                  Positioned(
-                    bottom: 60,
-                    right: 118,
-                    child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Visibility(
-                          visible: isVisible2,
-                          maintainAnimation: true,
-                          maintainSize: true,
-                          maintainState: true,
-                          child: Row(
-                            children: [
-                              IconButtonWidget(
-                                ontap: () {
-                                  PersistentNavBarNavigator.pushNewScreen(
-                                      context,
-                                      screen: const CreateStream(),
-                                      withNavBar: true);
-                                },
-                                width: 44,
-                                height: 44,
-                                widget: Image.asset(AppImages.streamIcon),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    AppColors.mainColor,
-                                    AppColors.indigoAccent,
-                                  ],
-                                ),
-                              ),
-                              CustomSizedBoxWidth(width: 35),
-                              IconButtonWidget(
-                                ontap: () {
-                                  PersistentNavBarNavigator.pushNewScreen(
-                                      context,
-                                      screen: UploadVideoView(),
-                                      withNavBar: true);
-                                },
-                                width: 44,
-                                height: 44,
-                                widget: SvgPicture.asset(AppImages.uploadsvg),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    AppColors.mainColor,
-                                    AppColors.indigoAccent,
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        )),
-                  ),
-                ],
-              )
-            : DrawerWithNavBar(
-                screen: PersistentTabView(
-                navBarHeight: 60,
-                context,
-                screens: _screens(),
-                items: _navbarItem(),
-                backgroundColor: AppColors.bgGradient1,
-                controller: controller,
-                navBarStyle: NavBarStyle.style6,
-                decoration:
-                    NavBarDecoration(borderRadius: BorderRadius.circular(1)),
-                stateManagement: true,
-              )),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: SpeedDialBuilder(
+          buttonAnchor: Alignment.center,
+          itemAnchor: Alignment.center,
+          reverse: true,
+          buttonBuilder: (context, isActive, toggle) => FloatingActionButton(
+            onPressed: toggle,
+            backgroundColor: AppColors.mainColor,
+            child: AnimatedRotation(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOutCubicEmphasized,
+              turns: isActive ? 1 : 0,
+              child: SvgPicture.asset(AppImages.imgVideocam),
+            ),
+          ),
+          itemBuilder: (context, Widget item, i, animation) {
+            // radius in relative units to each item
+            const radius = 1.7;
+            // angle in radians
+            final angle = i * (1 / 0.7) + 4;
+
+            final targetOffset = Offset(
+              radius * cos(angle),
+              radius * sin(angle),
+            );
+
+            final offsetAnimation = Tween<Offset>(
+              begin: Offset.zero,
+              end: targetOffset,
+            ).animate(animation);
+
+            return SlideTransition(
+              position: offsetAnimation,
+              child: FadeTransition(
+                opacity: animation,
+                child: item,
+              ),
+            );
+          },
+          items: [
+            FloatingActionButton.small(
+              backgroundColor: AppColors.mainColor,
+              onPressed: () {
+                PersistentNavBarNavigator.pushNewScreen(context,
+                    screen: const CreateStream(),withNavBar: true);
+              },
+              child: Image.asset(AppImages.streamIcon),
+            ),
+            FloatingActionButton.small(
+              backgroundColor: AppColors.mainColor,
+              onPressed: () {
+                PersistentNavBarNavigator.pushNewScreen(context,
+                    screen: UploadVideoView(),withNavBar: true);
+              },
+              child: SvgPicture.asset(AppImages.uploadsvg),
+            ),
+          ],
+        ),
+        body: PersistentTabView(
+          navBarHeight: 60,
+          context,
+          screens: _screens(),
+          items: _navbarItem(),
+          backgroundColor: AppColors.bgGradient1,
+          controller: controller,
+          navBarStyle: NavBarStyle.style6,
+          decoration: NavBarDecoration(borderRadius: BorderRadius.circular(1)),
+          stateManagement: true,
+        ),
       ),
     );
   }

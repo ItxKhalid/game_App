@@ -203,6 +203,7 @@ class _UploadVideoViewState extends State<UploadVideoView> {
                     SelectableContainers(),
                     CustomSizedBoxHeight(height: 30),
                     CustomButton(
+                      width: double.infinity,
                       title: 'Upload',
                       ontap: () {},
                       AppStyle: AppStyle.textStyle12regularWhite,

@@ -17,7 +17,7 @@ class CarouselSliderContainer extends StatelessWidget {
       borderRadius: BorderRadius.circular(14),
       child: Container(
         height: 167,
-        width: 340,
+        width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -36,41 +36,42 @@ class CarouselSliderContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 141.h,
-                width: 156.w,
                 decoration: BoxDecoration(
                     color: AppColors.black.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(16)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomText(
-                        textStyle: AppStyle.textStyle12regularWhite,
-                        title: 'WATCH PUBG GLOBAL\nCHAMPIONSHIP'),
-                    CustomSizedBoxHeight(height: 5),
-                    CustomText(
-                        textStyle: AppStyle.textStyle9SemiBoldWhite,
-                        title:
-                            'Enjoy watching the biggest PUBG\n event of thes year'),
-                    CustomSizedBoxHeight(height: 30),
-                    CustomButton(
-                      height: 27,
-                      width: 103,
-                      color: AppColors.whiteA700,
-                      AppStyle: AppStyle.textStyle10SemiBoldBlack,
-                      title: 'Watch Now',
-                      ontap: () {},
-                    )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomText(
+                          textStyle: AppStyle.textStyle12regularWhite,
+                          title: 'WATCH PUBG GLOBAL\nCHAMPIONSHIP'),
+                      CustomSizedBoxHeight(height: 5),
+                      CustomText(
+                          textStyle: AppStyle.textStyle9SemiBoldWhite,
+                          title:
+                              'Enjoy watching the biggest PUBG\n event of thes year'),
+                      CustomSizedBoxHeight(height: 30),
+                      CustomButton(
+                        height: 27,
+                        width: 103,
+                        color: AppColors.whiteA700,
+                        AppStyle: AppStyle.textStyle10SemiBoldBlack,
+                        title: 'Watch Now',
+                        ontap: () {},
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 55),
-              child: Image.asset(AppImages.pubg,width: 150,height: 150,),
+              child: Image.asset(AppImages.pubg,),
             )
           ],
         ),

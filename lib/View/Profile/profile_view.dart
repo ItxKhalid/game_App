@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:game/BottomNavBar.dart';
 import 'package:game/Utils/image_constant.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
 import 'package:game/widgets/custom_appbar.dart';
@@ -29,163 +30,166 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.teal.withOpacity(0.4),
-      child: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(AppImages.profileBackG),
-              alignment: Alignment.topCenter,
-            ),
-          ),
-          child: Scaffold(
-              extendBodyBehindAppBar: true,
-              backgroundColor: Colors.transparent,
-              appBar: AppBar(
-                backgroundColor: Colors.transparent,
-                leading: CustomAppBar(
-                  searchOntap: () {},
-                  drawerOntap: () {
-                    z.toggle!();
-                  },
-                  notificationOntap: () {},
-                  profileOntap: () {},
-                  settingOntap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SettingsView(),
-                      ),
-                    );
-                  },
-                ),
-                leadingWidth: double.infinity,
+    return DrawerWithNavBar(
+      screen: Container(
+        color: Colors.teal.withOpacity(0.4),
+        child: SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(AppImages.profileBackG),
+                alignment: Alignment.topCenter,
               ),
-              body: ListView(
-                physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.zero,
-                children: [
-                  Stack(children: [
-                    Padding(
-                        padding: EdgeInsets.only(top: 200.h),
-                        child: Container(
-                            height: 631.h,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(30.r)),
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    AppColors.bgGradient2,
-                                    AppColors.bgGradient2,
-                                    AppColors.bgGradient1,
-                                  ]),
-                            ),
-                            child: Column(
-                              children: [
-                                ///All details
-                                const ProfileDetails(),
-                                ///All Round Buttons
-                                RoundButtonProfile(
-                                  onTapFollow: () {},
-                                  onTapMessage: () {},
-                                  onTapSupport: () {
-                                    showModalBottomSheet(
-                                      barrierColor:
-                                          AppColors.gray.withOpacity(0.4),
-                                      backgroundColor: AppColors.bgGradient2A,
-                                      isDismissible: true,
-                                      useSafeArea: true,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(25.r),
-                                          topRight: Radius.circular(25.r),
+            ),
+            child: Scaffold(
+                extendBodyBehindAppBar: true,
+                backgroundColor: Colors.transparent,
+                appBar: AppBar(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  leading: CustomAppBar(
+                    searchOntap: () {},
+                    drawerOntap: () {
+                      z.toggle!();
+                    },
+                    notificationOntap: () {},
+                    profileOntap: () {},
+                    settingOntap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SettingsView(),
+                        ),
+                      );
+                    },
+                  ),
+                  leadingWidth: double.infinity,
+                ),
+                body: ListView(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  children: [
+                    Stack(children: [
+                      Padding(
+                          padding: EdgeInsets.only(top: 200.h),
+                          child: Container(
+                              height: 631.h,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(30.r)),
+                                gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      AppColors.bgGradient2,
+                                      AppColors.bgGradient2,
+                                      AppColors.bgGradient1,
+                                    ]),
+                              ),
+                              child: Column(
+                                children: [
+                                  ///All details
+                                  const ProfileDetails(),
+                                  ///All Round Buttons
+                                  RoundButtonProfile(
+                                    onTapFollow: () {},
+                                    onTapMessage: () {},
+                                    onTapSupport: () {
+                                      showModalBottomSheet(
+                                        barrierColor:
+                                            AppColors.gray.withOpacity(0.4),
+                                        backgroundColor: AppColors.bgGradient2A,
+                                        isDismissible: true,
+                                        useSafeArea: true,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(25.r),
+                                            topRight: Radius.circular(25.r),
+                                          ),
                                         ),
-                                      ),
-                                      isScrollControlled: true,
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return BottomSheetView(
-                                          onTapNft: () {
-                                            Get.to(showModalBottomSheet(
-                                              barrierColor: AppColors.gray
-                                                  .withOpacity(0.4),
-                                              backgroundColor:
-                                                  AppColors.bgGradient2A,
-                                              isDismissible: true,
-                                              useSafeArea: true,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.only(
-                                                  topLeft:
-                                                      Radius.circular(25.r),
-                                                  topRight:
-                                                      Radius.circular(25.r),
+                                        isScrollControlled: true,
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return BottomSheetView(
+                                            onTapNft: () {
+                                              Get.to(showModalBottomSheet(
+                                                barrierColor: AppColors.gray
+                                                    .withOpacity(0.4),
+                                                backgroundColor:
+                                                    AppColors.bgGradient2A,
+                                                isDismissible: true,
+                                                useSafeArea: true,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(25.r),
+                                                    topRight:
+                                                        Radius.circular(25.r),
+                                                  ),
                                                 ),
-                                              ),
-                                              isScrollControlled: true,
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return DonationDetailView(
-                                                    onTapMint: () {
-                                                  Get.to(showModalBottomSheet(
-                                                    barrierColor: AppColors.gray
-                                                        .withOpacity(0.4),
-                                                    backgroundColor:
-                                                        AppColors.bgGradient2A,
-                                                    isDismissible: true,
-                                                    useSafeArea: true,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        topLeft:
-                                                            Radius.circular(
-                                                                25.r),
-                                                        topRight:
-                                                            Radius.circular(
-                                                                25.r),
+                                                isScrollControlled: true,
+                                                context: context,
+                                                builder: (BuildContext context) {
+                                                  return DonationDetailView(
+                                                      onTapMint: () {
+                                                    Get.to(showModalBottomSheet(
+                                                      barrierColor: AppColors.gray
+                                                          .withOpacity(0.4),
+                                                      backgroundColor:
+                                                          AppColors.bgGradient2A,
+                                                      isDismissible: true,
+                                                      useSafeArea: true,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  25.r),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  25.r),
+                                                        ),
                                                       ),
-                                                    ),
-                                                    isScrollControlled: true,
-                                                    context: context,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return const NftSuccessBottomSheet();
-                                                    },
-                                                  ));
-                                                });
-                                              },
-                                            ));
-                                          },
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                                CustomSizedBoxHeight(height: 20),
-
-                                ///Profile list videos
-                                Expanded(
-                                  child: ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    physics: const BouncingScrollPhysics(),
-                                    itemCount: 5,
-                                    itemBuilder: (context, index) {
-                                      return const ProfileListView();
+                                                      isScrollControlled: true,
+                                                      context: context,
+                                                      builder:
+                                                          (BuildContext context) {
+                                                        return const NftSuccessBottomSheet();
+                                                      },
+                                                    ));
+                                                  });
+                                                },
+                                              ));
+                                            },
+                                          );
+                                        },
+                                      );
                                     },
                                   ),
-                                ),
-                              ],
-                            ))),
+                                  CustomSizedBoxHeight(height: 20),
 
-                    /// Profile image widget
-                    const CircularProfile(),
-                  ]),
-                ],
-              )),
+                                  ///Profile list videos
+                                  Expanded(
+                                    child: ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      physics: const BouncingScrollPhysics(),
+                                      itemCount: 5,
+                                      itemBuilder: (context, index) {
+                                        return const ProfileListView();
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ))),
+
+                      /// Profile image widget
+                      const CircularProfile(),
+                    ]),
+                  ],
+                )),
+          ),
         ),
       ),
     );

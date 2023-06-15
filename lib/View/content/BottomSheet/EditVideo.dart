@@ -4,6 +4,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:game/widgets/Sizebox/sizedboxheight.dart';
 import 'package:game/widgets/custom_icon_button.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../Utils/app_style.dart';
@@ -195,6 +196,7 @@ class _BottomSheetContentEditVideoState
                   SelectableContainersContent(),
                   CustomSizedBoxHeight(height: 15),
                   CustomButton(
+                    width: double.infinity,
                     title: 'Create',
                     ontap: () {},
                     AppStyle: AppStyle.textStyle12regularWhite,

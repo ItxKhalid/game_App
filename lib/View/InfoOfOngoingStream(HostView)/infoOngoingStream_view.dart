@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import '../../Utils/color_constant.dart';
 import '../../widgets/GradientTextWidget.dart';
 import '../Drawer/Drawer_view.dart';
+import '../Profile/profile_view.dart';
+import '../Settings/settings_view.dart';
 import 'Components/chat_screen.dart';
 import 'Components/tabBarInfoScreen.dart';
 
@@ -23,8 +25,7 @@ class _InfoOngoingStreamViewState extends State<InfoOngoingStreamView> {
 
   @override
   Widget build(BuildContext context) {
-    return DrawerWithNavBar(
-        screen: Scaffold(
+    return  Scaffold(
           // extendBodyBehindAppBar: true,
           backgroundColor: AppColors.bgGradient2,
           appBar: AppBar(
@@ -33,9 +34,23 @@ class _InfoOngoingStreamViewState extends State<InfoOngoingStreamView> {
             leadingWidth: double.infinity,
             leading: CustomAppBar(
               searchOntap: () {},
-              profileOntap: (){},
-              notificationOntap: (){},
-              settingOntap: (){},
+              settingOntap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsView(),
+                  ),
+                );
+              },
+              profileOntap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProfileView(),
+                  ),
+                );
+              },
+              notificationOntap: () {},
               drawerOntap: () {
                 z.toggle!();
               },
@@ -139,6 +154,6 @@ class _InfoOngoingStreamViewState extends State<InfoOngoingStreamView> {
               ],
             ),
           ),
-        ));
+        );
   }
 }

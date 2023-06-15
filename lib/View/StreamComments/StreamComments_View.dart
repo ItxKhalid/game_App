@@ -56,18 +56,25 @@ class _StreamCommentsState extends State<StreamComments> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              height: 40.h,
-                              width: 40.w,
-                              decoration: BoxDecoration(
-                                color: AppColors.backbutton,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  Icons.arrow_back_ios,
-                                  color: AppColors.iconcolor,
-                                  size: 20.w,
+                            GestureDetector(
+                              onTap: (){
+                                Get.back();
+                              },
+                              child: Container(
+                                height: 40.h,
+                                width: 40.w,
+                                decoration: BoxDecoration(
+                                  color: AppColors.backbutton.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: AppColors.gray75)
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    color: AppColors.iconcolor,
+                                    size: 20.w,
+                                  ),
                                 ),
                               ),
                             ),
@@ -81,6 +88,7 @@ class _StreamCommentsState extends State<StreamComments> {
                                 decoration: BoxDecoration(
                                   color: AppColors.backbutton,
                                   shape: BoxShape.circle,
+                                    border: Border.all(color: AppColors.gray75)
                                 ),
                                 child: Center(
                                     child: Image.asset(
