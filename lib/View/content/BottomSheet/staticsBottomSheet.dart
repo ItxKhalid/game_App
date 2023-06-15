@@ -146,7 +146,10 @@ class _BottomSheetContentStaticState
                        children: [
                        CustomText(
                            textStyle: AppStyle.textStyle16Bold600,
-                           title: '400')
+                           title: '400'),
+                       CustomText(
+                           textStyle: AppStyle.textStyle12regularWhite,
+                           title: 'Views'),
                      ],),
                    ),
                    Container(
@@ -168,7 +171,10 @@ class _BottomSheetContentStaticState
                        children: [
                        CustomText(
                            textStyle: AppStyle.textStyle16Bold600,
-                           title: '400')
+                           title: '400'),
+                       CustomText(
+                           textStyle: AppStyle.textStyle12regularWhite,
+                           title: 'Comments'),
                      ],),
                    ),
                    Container(
@@ -190,7 +196,10 @@ class _BottomSheetContentStaticState
                        children: [
                        CustomText(
                            textStyle: AppStyle.textStyle16Bold600,
-                           title: '400')
+                           title: '400'),
+                       CustomText(
+                           textStyle: AppStyle.textStyle12regularWhite,
+                           title: 'Likes'),
                      ],),
                    ),
                  ],),

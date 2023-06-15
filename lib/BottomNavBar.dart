@@ -187,12 +187,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.mainColor.withOpacity(0.2),
+                    color: AppColors.indigoAccent.withOpacity(0.6),
                     blurRadius: 10.0, // soften the shadow
-                    spreadRadius: 0.0, //extend the shadow
+                    spreadRadius: 4.0, //extend the shadow
                     offset: const Offset(
                       0.0, // Move to right 10  horizontally
-                      -2.0, // Move to bottom 10 Vertically
+                      8.0, // Move to bottom 10 Vertically
                     ),
                   )
                 ],
@@ -221,12 +221,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.mainColor.withOpacity(0.2),
+                    color: AppColors.mainColor.withOpacity(0.6),
                     blurRadius: 10.0, // soften the shadow
                     spreadRadius: 0.0, //extend the shadow
                     offset: const Offset(
-                      0.0, // Move to right 10  horizontally
-                      -2.0, // Move to bottom 10 Vertically
+                      0.0, 
+                      8.0, 
                     ),
                   )
                 ],
@@ -319,13 +319,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.mainColor.withOpacity(0.2),
+                    color: AppColors.mainColor.withOpacity(0.6),
                     blurRadius: 10.0, // soften the shadow
                     spreadRadius: 0.0, //extend the shadow
                     offset: const Offset(
-                      0.0, // Move to right 10  horizontally
-                      -2.0, // Move to bottom 10 Vertically
-                    ),
+                      0.0,
+                      8.0,
+                    )
                   )
                 ],
                 color: Colors.transparent,
@@ -355,13 +355,13 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.mainColor.withOpacity(0.2),
+                    color: AppColors.mainColor.withOpacity(0.6),
                     blurRadius: 10.0, // soften the shadow
                     spreadRadius: 0.0, //extend the shadow
                     offset: const Offset(
-                      0.0, // Move to right 10  horizontally
-                      -2.0, // Move to bottom 10 Vertically
-                    ),
+                      0.0,
+                      8.0,
+                    )
                   )
                 ],
                 color: Colors.transparent,
@@ -389,62 +389,75 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return DrawerWithNavBar(
       screen: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: SpeedDialBuilder(
-          buttonAnchor: Alignment.center,
-          itemAnchor: Alignment.center,
-          reverse: true,
-          buttonBuilder: (context, isActive, toggle) => FloatingActionButton(
-            onPressed: toggle,
-            backgroundColor: AppColors.mainColor,
-            child: AnimatedRotation(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOutCubicEmphasized,
-              turns: isActive ? 1 : 0,
-              child: SvgPicture.asset(AppImages.imgVideocam),
-            ),
+        floatingActionButton: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  AppColors.mainColor,
+                  AppColors.mainColor,
+                  AppColors.indigo,
+                ]),
           ),
-          itemBuilder: (context, Widget item, i, animation) {
-            // radius in relative units to each item
-            const radius = 1.7;
-            // angle in radians
-            final angle = i * (1 / 0.7) + 4;
-
-            final targetOffset = Offset(
-              radius * cos(angle),
-              radius * sin(angle),
-            );
-
-            final offsetAnimation = Tween<Offset>(
-              begin: Offset.zero,
-              end: targetOffset,
-            ).animate(animation);
-
-            return SlideTransition(
-              position: offsetAnimation,
-              child: FadeTransition(
-                opacity: animation,
-                child: item,
+          child: SpeedDialBuilder(
+            buttonAnchor: Alignment.center,
+            itemAnchor: Alignment.center,
+            reverse: true,
+            buttonBuilder: (context, isActive, toggle) => FloatingActionButton(
+              onPressed: toggle,
+              backgroundColor: Colors.transparent,
+              child: AnimatedRotation(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOutCubicEmphasized,
+                turns: isActive ? 1 : 0,
+                child: SvgPicture.asset(AppImages.imgVideocam),
               ),
-            );
-          },
-          items: [
-            FloatingActionButton.small(
-              backgroundColor: AppColors.mainColor,
-              onPressed: () {
-                PersistentNavBarNavigator.pushNewScreen(context,
-                    screen: const CreateStream(),withNavBar: true);
-              },
-              child: Image.asset(AppImages.streamIcon),
             ),
-            FloatingActionButton.small(
-              backgroundColor: AppColors.mainColor,
-              onPressed: () {
-                PersistentNavBarNavigator.pushNewScreen(context,
-                    screen: UploadVideoView(),withNavBar: true);
-              },
-              child: SvgPicture.asset(AppImages.uploadsvg),
-            ),
-          ],
+            itemBuilder: (context, Widget item, i, animation) {
+              // radius in relative units to each item
+              const radius = 1.7;
+              // angle in radians
+              final angle = i * (1 / 0.7) + 4;
+
+              final targetOffset = Offset(
+                radius * cos(angle),
+                radius * sin(angle),
+              );
+
+              final offsetAnimation = Tween<Offset>(
+                begin: Offset.zero,
+                end: targetOffset,
+              ).animate(animation);
+
+              return SlideTransition(
+                position: offsetAnimation,
+                child: FadeTransition(
+                  opacity: animation,
+                  child: item,
+                ),
+              );
+            },
+            items: [
+              FloatingActionButton.small(
+                backgroundColor: AppColors.mainColor,
+                onPressed: () {
+                  PersistentNavBarNavigator.pushNewScreen(context,
+                      screen: const CreateStream(),withNavBar: true);
+                },
+                child: Image.asset(AppImages.streamIcon),
+              ),
+              FloatingActionButton.small(
+                backgroundColor: AppColors.mainColor,
+                onPressed: () {
+                  PersistentNavBarNavigator.pushNewScreen(context,
+                      screen: UploadVideoView(),withNavBar: true);
+                },
+                child: SvgPicture.asset(AppImages.uploadsvg),
+              ),
+            ],
+          ),
         ),
         body: PersistentTabView(
           navBarHeight: 60,
