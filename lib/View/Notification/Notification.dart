@@ -63,243 +63,260 @@ class NotificationView extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GradientTextWidget(
-                  size: 19,
-                  text: 'Notifications',
-                ),
-                CustomSizedBoxHeight(height: 20),
-                SizedBox(
-                  height: 500,
-                  child: ListView(
-                    physics: const BouncingScrollPhysics(),
-                    padding: EdgeInsets.zero,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CircleAvatar(
-                            radius: 25,
-                            backgroundImage: AssetImage(AppImages.john),
-                          ),
-                          CustomSizedBoxWidth(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                  textStyle: AppStyle.textStyle12Regular,
-                                  title: 'skidrowgames started following you'),
-                              CustomText(
-                                  title: '4h ago',
-                                  textStyle: AppStyle.textStyle11SemiBoldBlack),
-                            ],
-                          )
-                        ],
+                      GradientTextWidget(
+                        size: 19,
+                        text: 'Notifications',
                       ),
                       CustomSizedBoxHeight(height: 20),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CircleAvatar(
-                            radius: 25,
-                            backgroundImage: AssetImage(AppImages.john),
-                          ),
-                          CustomSizedBoxWidth(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                  textStyle: AppStyle.textStyle12Regular,
-                                  title: 'skidrowgames started following you'),
-                              CustomText(
-                                  title: '4h ago',
-                                  textStyle: AppStyle.textStyle11SemiBoldBlack),
-                            ],
-                          )
-                        ],
-                      ),
-                      CustomSizedBoxHeight(height: 20),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CircleAvatar(
-                            radius: 25,
-                            backgroundImage: AssetImage(AppImages.john),
-                          ),
-                          CustomSizedBoxWidth(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                  textStyle: AppStyle.textStyle12Regular,
-                                  title: 'skidrowgames started following you'),
-                              CustomText(
-                                  title: '4h ago',
-                                  textStyle: AppStyle.textStyle11SemiBoldBlack),
-                            ],
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 80),
-                        child: Container(
-                          height: 62,
-                          decoration: BoxDecoration(
-                              color: AppColors.textField,
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 10),
-                                child: Image.asset(
-                                  AppImages.gamingImage2,
+                      SizedBox(
+                        height: 500,
+                        child: ListView(
+                          physics: const BouncingScrollPhysics(),
+                          padding: EdgeInsets.zero,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage: AssetImage(AppImages.john),
                                 ),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomText(
-                                      textStyle:
-                                          AppStyle.textStyle11SemiBoldWhite600,
-                                      title: 'Let’s see where we can go'),
-                                  CustomSizedBoxHeight(height: 5),
-                                  Container(
-                                    width: 29,
-                                    height: 18,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black38,
-                                      border: Border.all(
-                                          color: AppColors.mainColor),
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset(
-                                          AppImages.logopng,
-                                          height: 9,
-                                          width: 9,
-                                        ),
-                                        const SizedBox(width: 3),
-                                        const Text(
-                                          '1',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 7,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      CustomSizedBoxHeight(height: 20),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CircleAvatar(
-                            radius: 25,
-                            backgroundImage: AssetImage(AppImages.john),
-                          ),
-                          CustomSizedBoxWidth(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                  textStyle: AppStyle.textStyle12Regular,
-                                  title: 'skidrowgames started following you'),
-                              CustomText(
-                                  title: '4h ago',
-                                  textStyle: AppStyle.textStyle11SemiBoldBlack),
-                            ],
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 80),
-                        child: Container(
-                          height: 42,
-                          decoration: BoxDecoration(
-                              color: AppColors.textField,
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 10),
+                                CustomSizedBoxWidth(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(
+                                        textStyle: AppStyle.textStyle12Regular,
+                                        title:
+                                            'skidrowgames started following you'),
+                                    CustomText(
+                                        title: '4h ago',
+                                        textStyle:
+                                            AppStyle.textStyle11SemiBoldBlack),
+                                  ],
+                                )
+                              ],
+                            ),
+                            CustomSizedBoxHeight(height: 20),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage: AssetImage(AppImages.john),
+                                ),
+                                CustomSizedBoxWidth(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(
+                                        textStyle: AppStyle.textStyle12Regular,
+                                        title:
+                                            'skidrowgames started following you'),
+                                    CustomText(
+                                        title: '4h ago',
+                                        textStyle:
+                                            AppStyle.textStyle11SemiBoldBlack),
+                                  ],
+                                )
+                              ],
+                            ),
+                            CustomSizedBoxHeight(height: 20),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage: AssetImage(AppImages.john),
+                                ),
+                                CustomSizedBoxWidth(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(
+                                        textStyle: AppStyle.textStyle12Regular,
+                                        title:
+                                            'skidrowgames started following you'),
+                                    CustomText(
+                                        title: '4h ago',
+                                        textStyle:
+                                            AppStyle.textStyle11SemiBoldBlack),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 80),
+                              child: Container(
+                                height: 62,
+                                decoration: BoxDecoration(
+                                    color: AppColors.textField,
+                                    borderRadius: BorderRadius.circular(6)),
                                 child: Row(
                                   children: [
-                                    Image.asset(
-                                      AppImages.gamingImage2,
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10, horizontal: 10),
+                                      child: Image.asset(
+                                        AppImages.gamingImage2,
+                                      ),
                                     ),
-                                    CustomSizedBoxWidth(width: 10),
-                                    CustomText(
-                                        textStyle: AppStyle
-                                            .textStyle11SemiBoldWhite600,
-                                        title: 'Let’s see where we can go'),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        CustomText(
+                                            textStyle: AppStyle
+                                                .textStyle11SemiBoldWhite600,
+                                            title: 'Let’s see where we can go'),
+                                        CustomSizedBoxHeight(height: 5),
+                                        Container(
+                                          width: 29,
+                                          height: 18,
+                                          decoration: BoxDecoration(
+                                            color: Colors.black38,
+                                            border: Border.all(
+                                                color: AppColors.mainColor),
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Image.asset(
+                                                AppImages.logopng,
+                                                height: 9,
+                                                width: 9,
+                                              ),
+                                              const SizedBox(width: 3),
+                                              const Text(
+                                                '1',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 7,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    )
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      CustomSizedBoxHeight(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 80, right: 155),
-                        child: CustomButton(
-                          width: 98,
-                          height: 29,
-                          title: '    Check it out',
-                          ontap: () {},
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              AppColors.mainColor,
-                              AppColors.indigoAccent,
-                            ],
-                          ),
-                          AppStyle: AppStyle.textStyle8White600,
+                              ),
+                            ),
+                            CustomSizedBoxHeight(height: 20),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage: AssetImage(AppImages.john),
+                                ),
+                                CustomSizedBoxWidth(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomText(
+                                        textStyle: AppStyle.textStyle12Regular,
+                                        title:
+                                            'skidrowgames started following you'),
+                                    CustomText(
+                                        title: '4h ago',
+                                        textStyle:
+                                            AppStyle.textStyle11SemiBoldBlack),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 80),
+                              child: Container(
+                                height: 42,
+                                decoration: BoxDecoration(
+                                    color: AppColors.textField,
+                                    borderRadius: BorderRadius.circular(6)),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 5, bottom: 5, left: 10),
+                                      child: Row(
+                                        children: [
+                                          Image.asset(
+                                            AppImages.gamingImage2,
+                                          ),
+                                          CustomSizedBoxWidth(width: 10),
+                                          CustomText(
+                                              textStyle: AppStyle
+                                                  .textStyle11SemiBoldWhite600,
+                                              title: 'Let’s see where we can go'),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            CustomSizedBoxHeight(height: 20),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 80, right: 155),
+                              child: CustomButton(
+                                width: 98,
+                                height: 29,
+                                title: '    Check it out',
+                                ontap: () {},
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    AppColors.mainColor,
+                                    AppColors.indigoAccent,
+                                  ],
+                                ),
+                                AppStyle: AppStyle.textStyle8White600,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-                CustomSizedBoxHeight(height: 10),
-                CustomButton(
-                  title: 'Clear All',
-                  ontap: () {},
-                  AppStyle: AppStyle.textStyle12regularWhite,
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        AppColors.indigoAccent,
-                        AppColors.mainColor,
-                        AppColors.mainColor,
-                      ]),
-                )
-              ],
-            ),
+              ),
+              CustomButton(
+                width: double.infinity,
+                title: 'Clear All',
+                ontap: () {},
+                AppStyle: AppStyle.textStyle12regularWhite,
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      AppColors.indigoAccent,
+                      AppColors.mainColor,
+                      AppColors.mainColor,
+                    ]),
+              )
+            ],
           ),
         ),
       ),

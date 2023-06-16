@@ -197,7 +197,7 @@ class _BottomSheetContentEditVideoState
                   CustomSizedBoxHeight(height: 15),
                   CustomButton(
                     width: double.infinity,
-                    title: 'Create',
+                    title: 'Save',
                     ontap: () {},
                     AppStyle: AppStyle.textStyle12regularWhite,
                     gradient: LinearGradient(

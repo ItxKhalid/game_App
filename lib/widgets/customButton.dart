@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
       required this.ontap,
       this.gradient,
       this.height= 53,
-      this.width=310,
+      this.width=double.infinity,
       this.color,
       this.icon,
       this.AppStyle,

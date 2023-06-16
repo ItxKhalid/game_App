@@ -39,7 +39,7 @@ class FollowersList extends StatelessWidget {
               children: [
                 CustomText(
                     textStyle: AppStyle.textStyle12regularWhite,
-                    title: imagepath),
+                    title: name),
                 CustomSizedBoxHeight(height: 3.w),
                 CustomText(
                     textStyle: AppStyle.textStyle11SemiBoldBlack,

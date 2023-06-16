@@ -206,6 +206,7 @@ class _TabBarInfoScreenState extends State<TabBarInfoScreen> {
                           ),
                         );
                       },
+                      width: double.infinity,
                       title: 'Save changes',
                       AppStyle: AppStyle.textStyle11SemiBoldBlack,
                       color: AppColors.fieldUnActive,

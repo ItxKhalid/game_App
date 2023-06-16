@@ -124,7 +124,8 @@ class BottomSheetContentEditNFt extends StatelessWidget {
                     ],),
                   CustomSizedBoxHeight(height: 15),
                   CustomButton(
-                    title: 'Create',
+                    width: double.infinity,
+                    title: 'Save',
                     ontap: (){},
                     AppStyle: AppStyle.textStyle12regularWhite,
                     gradient: LinearGradient(

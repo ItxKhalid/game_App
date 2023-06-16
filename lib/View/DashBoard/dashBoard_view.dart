@@ -13,7 +13,10 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../Utils/color_constant.dart';
 import '../../widgets/GradientTextWidget.dart';
 import '../../widgets/custom_appbar.dart';
-import '../StreamComments/StreamComments_View.dart';
+import '../LiveStreamResCreator_View/livestream_rescreatorView.dart';
+import '../VideoPage_View/StreamComments_View.dart';
+import '../ViewAllVideo&Stream/viewAllLiveStream_view.dart';
+import '../ViewAllVideo&Stream/viewAllVideo_View.dart';
 import 'Components/topStreams_widget.dart';
 import 'Components/topVideos_widget.dart';
 
@@ -79,7 +82,6 @@ class _DashBoardViewState extends State<DashBoardView> {
                 notificationOntap: () {},
                 drawerOntap: () {
                   z.toggle!();
-                  Get.offAll(context);
                 },
               ),
             ),
@@ -116,19 +118,9 @@ class _DashBoardViewState extends State<DashBoardView> {
                     CustomSizedBoxHeight(height: 30),
 
                     /// Top Streamers and Like Stories
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GradientTextWidget(
-                          text: 'Top Streamers',
-                          size: 11,
-                        ),
-                        CustomText(
-                          textStyle:
-                              TextStyle(color: AppColors.gray75, fontSize: 10),
-                          title: 'View all',
-                        )
-                      ],
+                    GradientTextWidget(
+                      text: 'Top Streamers',
+                      size: 11,
                     ),
                     CustomSizedBoxHeight(height: 20),
                     SizedBox(
@@ -170,10 +162,17 @@ class _DashBoardViewState extends State<DashBoardView> {
                           text: 'Top Streams',
                           size: 11,
                         ),
-                        CustomText(
-                          textStyle:
-                              TextStyle(color: AppColors.gray75, fontSize: 10),
-                          title: 'View all',
+                        GestureDetector(
+                          onTap: () {
+                            // Get.to(()=> AllLivesView());
+                            PersistentNavBarNavigator.pushNewScreen(context, screen: AllLivesView(),withNavBar: true);
+                          },
+
+                          child: CustomText(
+                            textStyle:
+                                TextStyle(color: AppColors.gray75, fontSize: 11),
+                            title: 'View all',
+                          ),
                         )
                       ],
                     ),
@@ -188,7 +187,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                               onTap: () {
                                 PersistentNavBarNavigator.pushNewScreen(
                                     context,
-                                    screen: const StreamComments(),
+                                    screen:  const LiveStreamResCreator(),
                                   withNavBar: false
                                 );
                               },
@@ -206,10 +205,16 @@ class _DashBoardViewState extends State<DashBoardView> {
                           text: 'Top Videos',
                           size: 11,
                         ),
-                        CustomText(
-                          textStyle:
-                              TextStyle(color: AppColors.gray75, fontSize: 10),
-                          title: 'View all',
+                        GestureDetector(
+                          onTap: () {
+                            // Get.to(()=> AllVideoView());
+                            PersistentNavBarNavigator.pushNewScreen(context, screen: AllVideoView(),withNavBar: true);
+                          },
+                          child: CustomText(
+                            textStyle:
+                                TextStyle(color: AppColors.gray75, fontSize: 11),
+                            title: 'View all',
+                          ),
                         )
                       ],
                     ),
@@ -220,7 +225,11 @@ class _DashBoardViewState extends State<DashBoardView> {
                         scrollDirection: Axis.horizontal,
                         itemCount: 5,
                         itemBuilder: (context, index) {
-                          return const TopVideosWidgets();
+                          return GestureDetector(
+                              onTap: (){
+                                Get.to(()=>  const StreamComments());
+                              },
+                              child: const TopVideosWidgets());
                         },
                       ),
                     ),

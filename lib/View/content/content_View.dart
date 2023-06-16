@@ -109,14 +109,16 @@ class ContentView extends StatelessWidget {
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               colors: [
-                                AppColors.indigoAccent,
+                                AppColors.redAccsent,
                                 AppColors.mainColor,
-                                AppColors.indigoAccent,
+                                AppColors.mainColor,
+                                AppColors.mainColor,
+                                AppColors.redAccsent,
                               ]),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 5),
+                              horizontal: 15.0, vertical: 10),
                           child: Text(
                             '+ NFT collection',
                             style: AppStyle.textStyle12regularWhite,
@@ -463,7 +465,6 @@ class ContentView extends StatelessWidget {
                               },
                             ),
                           ),
-
                           ///NFTs
                           DefaultTabController(
                             length: 2,
@@ -980,7 +981,8 @@ class ContentView extends StatelessWidget {
                   SelectableContainersContentVertical(),
                   CustomSizedBoxHeight(height: 30),
                   CustomButton(
-                    title: 'Create',
+                    width: double.infinity,
+                    title: 'Save Changes',
                     ontap: () {
                       Navigator.pop(context);
                     },

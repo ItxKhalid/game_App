@@ -18,6 +18,7 @@ import 'View/DashBoard/dashBoard_view.dart';
 import 'View/Drawer/Drawer_view.dart';
 import 'View/Favorites/favorites_View.dart';
 import 'View/Followers/followers.dart';
+import 'View/Login/login_View.dart';
 import 'View/Messages/Messages_View.dart';
 import 'View/UploadVideoS/UploadVideo_View.dart';
 import 'View/content/content_View.dart';
@@ -34,116 +35,124 @@ class DrawerWithNavBar extends StatefulWidget {
 class _DrawerWithNavBarState extends State<DrawerWithNavBar> {
   @override
   Widget build(BuildContext context) {
-    return ZoomDrawer(
-      controller: z,
-      borderRadius: 24,
-      clipMainScreen: false,
-      mainScreenTapClose: true,
-      androidCloseOnBackTap: false,
-      disableDragGesture: false,
-      mainScreenAbsorbPointer: false,
-      // menuScreenTapClose: true,
-      moveMenuScreen: true,
-      // shrinkMainScreen: true,
-      // closeCurve: Curves.bounceInOut,
-      style: DrawerStyle.defaultStyle,
-      menuScreenWidth: double.infinity,
-      showShadow: true,
-      openCurve: Curves.easeInOutCubic,
-      slideWidth: MediaQuery.of(context).size.width * 0.6,
-      duration: const Duration(milliseconds: 50),
-      reverseDuration: const Duration(milliseconds: 50),
-      angle: 0.0,
-      shadowLayer2Color: AppColors.textField.withOpacity(0.8),
-      shadowLayer1Color: AppColors.bgGradient1.withOpacity(0.6),
-      mainScreen: widget.screen,
-      menuScreen: Theme(
-        data: ThemeData.dark(),
-        child: Scaffold(
-          backgroundColor: AppColors.mainColor,
-          body: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage(AppImages.backgroundDra),
-              fit: BoxFit.cover,
-            )),
-            child: Padding(
-              padding: EdgeInsets.only(left: 26.h),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomSizedBoxHeight(height: 140),
-                  SizedBox(
-                    width: 120,
-                    child: IconButton(
-                        onPressed: () {
-                          Get.to(() => const DashBoardScreen());
-                        },
-                        icon: Row(
-                          children: [
-                            const Icon(Icons.window_rounded),
-                            const SizedBox(width: 5),
-                            CustomText(
-                                textStyle: AppStyle.textStyle14whiteSemiBold,
-                                title: 'Home')
-                          ],
-                        )),
-                  ),
-                  CustomSizedBoxHeight(height: 15),
-                  SizedBox(
-                    width: 120,
-                    child: IconButton(
-                        onPressed: () {
-                          Get.to(() => const AnalyticsScreen());
-                        },
-                        icon: Row(
-                          children: [
-                            SvgPicture.asset(AppImages.Vectorsvg,
-                                color: AppColors.whiteA700),
-                            const SizedBox(width: 5),
-                            CustomText(
-                                textStyle: AppStyle.textStyle14whiteSemiBold,
-                                title: 'Analytics')
-                          ],
-                        )),
-                  ),
-                  CustomSizedBoxHeight(height: 15),
-                  SizedBox(
-                    width: 120,
-                    child: IconButton(
-                        onPressed: () {
-                          PersistentNavBarNavigator.pushNewScreen(context,
-                              screen: const Followers());
-                        },
-                        icon: Row(
-                          children: [
-                            const Icon(Icons.person_add_alt_rounded),
-                            const SizedBox(width: 5),
-                            CustomText(
-                                textStyle: AppStyle.textStyle14whiteSemiBold,
-                                title: 'Followers')
-                          ],
-                        )),
-                  ),
-                  CustomSizedBoxHeight(height: 70),
-                  SizedBox(
-                    width: 120,
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Row(
-                          children: [
-                            const Icon(Icons.logout),
-                            const SizedBox(width: 5),
-                            CustomText(
-                                textStyle: AppStyle.textStyle14whiteSemiBold,
-                                title: 'Logout')
-                          ],
-                        )),
-                  ),
-                ],
+    return WillPopScope(
+      onWillPop: () async {
+        z.toggle!();
+        return false;
+      },
+      child: ZoomDrawer(
+        controller: z,
+        borderRadius: 24,
+        clipMainScreen: false,
+        mainScreenTapClose: true,
+        androidCloseOnBackTap: true,
+        disableDragGesture: false,
+        mainScreenAbsorbPointer: false,
+        // menuScreenTapClose: true,
+        moveMenuScreen: true,
+        // shrinkMainScreen: true,
+        // closeCurve: Curves.bounceInOut,
+        style: DrawerStyle.defaultStyle,
+        menuScreenWidth: double.infinity,
+        showShadow: true,
+        openCurve: Curves.easeInOutCubic,
+        slideWidth: MediaQuery.of(context).size.width * 0.6,
+        duration: const Duration(milliseconds: 50),
+        reverseDuration: const Duration(milliseconds: 50),
+        angle: 0.0,
+        shadowLayer2Color: AppColors.textField.withOpacity(0.8),
+        shadowLayer1Color: AppColors.bgGradient1.withOpacity(0.6),
+        mainScreen: widget.screen,
+        menuScreen: Theme(
+          data: ThemeData.dark(),
+          child: Scaffold(
+            backgroundColor: AppColors.mainColor,
+            body: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage(AppImages.backgroundDra),
+                fit: BoxFit.cover,
+              )),
+              child: Padding(
+                padding: EdgeInsets.only(left: 26.h),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomSizedBoxHeight(height: 140),
+                    SizedBox(
+                      width: 120,
+                      child: IconButton(
+                          onPressed: () {
+                            Get.to(() => const DashBoardScreen());
+                          },
+                          icon: Row(
+                            children: [
+                              const Icon(Icons.window_rounded),
+                              const SizedBox(width: 5),
+                              CustomText(
+                                  textStyle: AppStyle.textStyle14whiteSemiBold,
+                                  title: 'Home')
+                            ],
+                          )),
+                    ),
+                    CustomSizedBoxHeight(height: 15),
+                    SizedBox(
+                      width: 120,
+                      child: IconButton(
+                          onPressed: () {
+                            Get.to(() => const AnalyticsScreen());
+                          },
+                          icon: Row(
+                            children: [
+                              SvgPicture.asset(AppImages.Vectorsvg,
+                                  color: AppColors.whiteA700),
+                              const SizedBox(width: 5),
+                              CustomText(
+                                  textStyle: AppStyle.textStyle14whiteSemiBold,
+                                  title: 'Analytics')
+                            ],
+                          )),
+                    ),
+                    CustomSizedBoxHeight(height: 15),
+                    SizedBox(
+                      width: 120,
+                      child: IconButton(
+                          onPressed: () {
+                            PersistentNavBarNavigator.pushNewScreen(context,
+                                screen: const Followers());
+                          },
+                          icon: Row(
+                            children: [
+                              const Icon(Icons.person_add_alt_rounded),
+                              const SizedBox(width: 5),
+                              CustomText(
+                                  textStyle: AppStyle.textStyle14whiteSemiBold,
+                                  title: 'Followers')
+                            ],
+                          )),
+                    ),
+                    CustomSizedBoxHeight(height: 70),
+                    SizedBox(
+                      width: 120,
+                      child: IconButton(
+                          onPressed: () {
+                            Get.to(()=>const LoginView());
+                          },
+                          icon: Row(
+                            children: [
+                              const Icon(Icons.logout),
+                              const SizedBox(width: 5),
+                              CustomText(
+                                  textStyle: AppStyle.textStyle14whiteSemiBold,
+                                  title: 'Logout')
+                            ],
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -386,89 +395,95 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return DrawerWithNavBar(
-      screen: Scaffold(
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  AppColors.mainColor,
-                  AppColors.mainColor,
-                  AppColors.indigo,
-                ]),
-          ),
-          child: SpeedDialBuilder(
-            buttonAnchor: Alignment.center,
-            itemAnchor: Alignment.center,
-            reverse: true,
-            buttonBuilder: (context, isActive, toggle) => FloatingActionButton(
-              onPressed: toggle,
-              backgroundColor: Colors.transparent,
-              child: AnimatedRotation(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOutCubicEmphasized,
-                turns: isActive ? 1 : 0,
-                child: SvgPicture.asset(AppImages.imgVideocam),
-              ),
+    return WillPopScope(
+      onWillPop: () async {
+        z.toggle!(); // Call z.toggle() when back button is pressed
+        return false; // Prevent default back button behavior
+      },
+      child: DrawerWithNavBar(
+        screen: Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    AppColors.mainColor,
+                    AppColors.mainColor,
+                    AppColors.indigo,
+                  ]),
             ),
-            itemBuilder: (context, Widget item, i, animation) {
-              // radius in relative units to each item
-              const radius = 1.7;
-              // angle in radians
-              final angle = i * (1 / 0.7) + 4;
-
-              final targetOffset = Offset(
-                radius * cos(angle),
-                radius * sin(angle),
-              );
-
-              final offsetAnimation = Tween<Offset>(
-                begin: Offset.zero,
-                end: targetOffset,
-              ).animate(animation);
-
-              return SlideTransition(
-                position: offsetAnimation,
-                child: FadeTransition(
-                  opacity: animation,
-                  child: item,
+            child: SpeedDialBuilder(
+              buttonAnchor: Alignment.center,
+              itemAnchor: Alignment.center,
+              reverse: true,
+              buttonBuilder: (context, isActive, toggle) => FloatingActionButton(
+                onPressed: toggle,
+                backgroundColor: Colors.transparent,
+                child: AnimatedRotation(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOutCubicEmphasized,
+                  turns: isActive ? 1 : 0,
+                  child: SvgPicture.asset(AppImages.imgVideocam),
                 ),
-              );
-            },
-            items: [
-              FloatingActionButton.small(
-                backgroundColor: AppColors.mainColor,
-                onPressed: () {
-                  PersistentNavBarNavigator.pushNewScreen(context,
-                      screen: const CreateStream(),withNavBar: true);
-                },
-                child: Image.asset(AppImages.streamIcon),
               ),
-              FloatingActionButton.small(
-                backgroundColor: AppColors.mainColor,
-                onPressed: () {
-                  PersistentNavBarNavigator.pushNewScreen(context,
-                      screen: UploadVideoView(),withNavBar: true);
-                },
-                child: SvgPicture.asset(AppImages.uploadsvg),
-              ),
-            ],
+              itemBuilder: (context, Widget item, i, animation) {
+                // radius in relative units to each item
+                const radius = 1.7;
+                // angle in radians
+                final angle = i * (1 / 0.7) + 4;
+
+                final targetOffset = Offset(
+                  radius * cos(angle),
+                  radius * sin(angle),
+                );
+
+                final offsetAnimation = Tween<Offset>(
+                  begin: Offset.zero,
+                  end: targetOffset,
+                ).animate(animation);
+
+                return SlideTransition(
+                  position: offsetAnimation,
+                  child: FadeTransition(
+                    opacity: animation,
+                    child: item,
+                  ),
+                );
+              },
+              items: [
+                FloatingActionButton.small(
+                  backgroundColor: AppColors.mainColor,
+                  onPressed: () {
+                    PersistentNavBarNavigator.pushNewScreen(context,
+                        screen: const CreateStream(),withNavBar: true);
+                  },
+                  child: Image.asset(AppImages.streamIcon),
+                ),
+                FloatingActionButton.small(
+                  backgroundColor: AppColors.mainColor,
+                  onPressed: () {
+                    PersistentNavBarNavigator.pushNewScreen(context,
+                        screen: UploadVideoView(),withNavBar: true);
+                  },
+                  child: SvgPicture.asset(AppImages.uploadsvg),
+                ),
+              ],
+            ),
           ),
-        ),
-        body: PersistentTabView(
-          navBarHeight: 60,
-          context,
-          screens: _screens(),
-          items: _navbarItem(),
-          backgroundColor: AppColors.bgGradient1,
-          controller: controller,
-          navBarStyle: NavBarStyle.style6,
-          decoration: NavBarDecoration(borderRadius: BorderRadius.circular(1)),
-          stateManagement: true,
+          body: PersistentTabView(
+            navBarHeight: 60,
+            context,
+            screens: _screens(),
+            items: _navbarItem(),
+            backgroundColor: AppColors.bgGradient1,
+            controller: controller,
+            navBarStyle: NavBarStyle.style6,
+            decoration: NavBarDecoration(borderRadius: BorderRadius.circular(1)),
+            stateManagement: true,
+          ),
         ),
       ),
     );

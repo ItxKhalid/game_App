@@ -6,6 +6,7 @@ import 'package:game/widgets/Sizebox/sizedboxwidth.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../Utils/color_constant.dart';
+import '../View/Drawer/Drawer_view.dart';
 import '../View/Notification/Notification.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -36,7 +37,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
         Padding(
           padding: const EdgeInsets.only(top: 8, bottom: 8, left: 18),
           child: IconButtonWidget(
-            ontap: widget.drawerOntap!,
+            ontap: (){
+              z.toggle!();
+            },
             containerColor: Colors.deepOrange,
             height: 35,
             width: 35,

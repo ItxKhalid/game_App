@@ -87,7 +87,7 @@ class _ChatViewState extends State<ChatView> {
                     children: [
                       IconButton(
                           onPressed: () {
-                            Get.offAll(context);
+                            Get.back();
                           },
                           icon: Icon(
                             Icons.arrow_back_ios,
