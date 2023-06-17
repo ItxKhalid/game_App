@@ -13,6 +13,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../Utils/color_constant.dart';
 import '../../widgets/GradientTextWidget.dart';
 import '../../widgets/custom_appbar.dart';
+import '../LiveStreamResCreator_View/liveStreamView.dart';
 import '../LiveStreamResCreator_View/livestream_rescreatorView.dart';
 import '../VideoPage_View/StreamComments_View.dart';
 import '../ViewAllVideo&Stream/viewAllLiveStream_view.dart';
@@ -187,7 +188,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                               onTap: () {
                                 PersistentNavBarNavigator.pushNewScreen(
                                     context,
-                                    screen:  const LiveStreamResCreator(),
+                                    screen:  const LiveStreamViewAndComments(),
                                   withNavBar: false
                                 );
                               },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../Utils/app_style.dart';
@@ -19,22 +20,22 @@ class DonationDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.greenAccent,
-      height: 600,
+      height: 720,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Container(
                   height: 366,
-                  width: 351,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
-                          image: AssetImage(AppImages.gamingImage2))),
+                          image: AssetImage(AppImages.gamingImage2),fit: BoxFit.fill)),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8.0,top:25),
                     child: Row(

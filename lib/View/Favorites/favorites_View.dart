@@ -140,7 +140,7 @@ class FavoritesView extends StatelessWidget {
                                         ),
                                         CustomText(
                                             textStyle: AppStyle.textStyle10Regular,
-                                            title: '240 watching'
+                                            title: '240 watching . 2 months ago'
                                         ),
                                       ],
                                     ),

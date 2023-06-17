@@ -8,27 +8,25 @@ import 'package:game/widgets/customtext.dart';
 import 'package:get/get.dart';
 import '../../BottomNavBar.dart';
 import '../../Utils/AppConstant.dart';
-import '../../widgets/GradientTextWidget.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../Donation/BottomSheet.dart';
 import '../Donation/NFT_View/SuccessNft.dart';
 import '../Donation/NFT_View/donationDetailScreen.dart';
 import '../LiveStream_ActiveScreen/livestream_activescreenView.dart';
-import 'StreamComponents/StreamCmntsRow1.dart';
-import 'StreamComponents/StreamCmntsRow2.dart';
-import 'StreamComponents/StreamCmntsRow3.dart';
+import '../VideoPage_View/StreamComponents/StreamCmntsRow1.dart';
+import '../VideoPage_View/StreamComponents/StreamCmntsRow2.dart';
+import '../VideoPage_View/StreamComponents/StreamCmntsRow3.dart';
 
-class StreamComments extends StatefulWidget {
-  const StreamComments({super.key});
+class LiveStreamViewAndComments extends StatefulWidget {
+  const LiveStreamViewAndComments({super.key});
 
   @override
-  State<StreamComments> createState() => _StreamCommentsState();
+  State<LiveStreamViewAndComments> createState() => _LiveStreamViewAndCommentsState();
 }
 
-class _StreamCommentsState extends State<StreamComments> {
+class _LiveStreamViewAndCommentsState extends State<LiveStreamViewAndComments> {
   var msgtext = TextEditingController();
   var listviewcon = TextEditingController();
-  bool isVisible2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,25 +49,23 @@ class _StreamCommentsState extends State<StreamComments> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 25.w, vertical: 15.h),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
                         child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Get.to(() => const DashBoardScreen());
+                                  Get.to(()=>const DashBoardScreen());
                                 },
                                 child: Container(
                                   height: 40.h,
                                   width: 40.w,
                                   decoration: BoxDecoration(
-                                      color:
-                                          AppColors.backbutton.withOpacity(0.5),
+                                      color: AppColors.backbutton.withOpacity(0.5),
                                       shape: BoxShape.circle,
-                                      border:
-                                          Border.all(color: AppColors.gray75)),
+                                      border: Border.all(color: AppColors.gray75)),
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
                                     child: Icon(
@@ -90,13 +86,12 @@ class _StreamCommentsState extends State<StreamComments> {
                                   decoration: BoxDecoration(
                                       color: AppColors.backbutton,
                                       shape: BoxShape.circle,
-                                      border:
-                                          Border.all(color: AppColors.gray75)),
+                                      border: Border.all(color: AppColors.gray75)),
                                   child: Center(
                                       child: Image.asset(
-                                    AppImages.expandvctr,
-                                    height: 25.h,
-                                  )),
+                                        AppImages.expandvctr,
+                                        height: 25.h,
+                                      )),
                                 ),
                               ),
                             ]),
@@ -104,8 +99,8 @@ class _StreamCommentsState extends State<StreamComments> {
                     ),
                     CustomSizedBoxHeight(height: 12.h),
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 25.w, vertical: 15.h),
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -132,7 +127,7 @@ class _StreamCommentsState extends State<StreamComments> {
                                     onTapNft: () {
                                       Get.to(showModalBottomSheet(
                                         barrierColor:
-                                            AppColors.gray.withOpacity(0.4),
+                                        AppColors.gray.withOpacity(0.4),
                                         backgroundColor: AppColors.bgGradient2A,
                                         isDismissible: true,
                                         useSafeArea: true,
@@ -145,21 +140,18 @@ class _StreamCommentsState extends State<StreamComments> {
                                         isScrollControlled: true,
                                         context: context,
                                         builder: (BuildContext context) {
-                                          return DonationDetailView(
-                                              onTapMint: () {
+                                          return DonationDetailView(onTapMint: () {
                                             Get.to(showModalBottomSheet(
-                                              barrierColor: AppColors.gray
-                                                  .withOpacity(0.4),
+                                              barrierColor:
+                                              AppColors.gray.withOpacity(0.4),
                                               backgroundColor:
-                                                  AppColors.bgGradient2A,
+                                              AppColors.bgGradient2A,
                                               isDismissible: true,
                                               useSafeArea: true,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
-                                                  topLeft:
-                                                      Radius.circular(25.r),
-                                                  topRight:
-                                                      Radius.circular(25.r),
+                                                  topLeft: Radius.circular(25.r),
+                                                  topRight: Radius.circular(25.r),
                                                 ),
                                               ),
                                               isScrollControlled: true,
@@ -178,89 +170,11 @@ class _StreamCommentsState extends State<StreamComments> {
                             },
                           ),
                           CustomSizedBoxHeight(height: 26.h),
-                          Stack(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomText(
-                                      textStyle:
-                                          AppStyle.textStyle14whiteSemiBold,
-                                      title: "Comments"),
-                                  CustomSizedBoxHeight(height: 8.h),
-                                  const StreamCmntsRow3(),
-                                  CustomSizedBoxHeight(height: 8.h),
-                                  const StreamCmntsRow3(),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        isVisible2 = !isVisible2;
-                                      });
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 40.0, top: 6),
-                                      child: CustomText(
-                                          textStyle: const TextStyle(
-                                              color: Colors.blueAccent,
-                                              fontSize: 12),
-                                          title: "3 REPLIES"),
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-                              /// Replies View
-                              Visibility(
-                                  child: Visibility(
-                                visible: isVisible2,
-                                maintainAnimation: true,
-                                maintainSize: true,
-                                maintainState: true,
-                                child: Container(
-                                  color: AppColors.scaflodbgcolor,
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: (){
-                                              setState(() {
-                                                isVisible2 = !isVisible2;
-                                              });
-                                            },
-                                            child: Icon(
-                                              Icons.arrow_back_ios,
-                                              color: AppColors.mainColor,
-                                              size: 22,
-                                            ),
-                                          ),
-                                          CustomText(
-                                              textStyle:
-                                              AppStyle.textStyle16Bold600,
-                                              title: "Replies"),
-                                        ],
-                                      ),
-                                      CustomSizedBoxHeight(height: 8.h),
-                                      const StreamCmntsRow4(),
-                                      CustomSizedBoxHeight(height: 10.h),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 30.0),
-                                        child: Column(
-                                          children: [
-                                            const StreamCmntsRow3(),
-                                            CustomSizedBoxHeight(height: 10.h),
-                                            const StreamCmntsRow4(),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ))
-                            ],
-                          )
+                          CustomText(
+                              textStyle: AppStyle.textStyle14whiteSemiBold,
+                              title: "Live chat room"),
+                          CustomSizedBoxHeight(height: 8.h),
+                          const StreamCmntsRow3(),
                         ],
                       ),
                     )
@@ -294,30 +208,30 @@ class _StreamCommentsState extends State<StreamComments> {
                     border: InputBorder.none,
                     suffixIcon: msgtext.text.length != 0
                         ? Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: IconButtonWidget(
-                              ontap: () {},
-                              height: 35,
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  AppColors.mainColor,
-                                  AppColors.indigoAccent,
-                                ],
-                              ),
-                              width: 35,
-                              widget: const Icon(
-                                Icons.send,
-                                size: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButtonWidget(
+                        ontap: () {},
+                        height: 35,
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            AppColors.mainColor,
+                            AppColors.indigoAccent,
+                          ],
+                        ),
+                        width: 35,
+                        widget: const Icon(
+                          Icons.send,
+                          size: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
                         : Icon(
-                            Icons.emoji_emotions_outlined,
-                            color: AppColors.gray75,
-                          ),
+                      Icons.emoji_emotions_outlined,
+                      color: AppColors.gray75,
+                    ),
                     contentPadding: const EdgeInsets.only(left: 10),
                     hintStyle: TextStyle(
                         color: const Color(0xff7C7C7C),

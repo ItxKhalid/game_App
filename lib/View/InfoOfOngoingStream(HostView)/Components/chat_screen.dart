@@ -34,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
+        Flexible(
           child: ListView.builder(
               itemCount: me.length,
               reverse: true,
@@ -116,7 +116,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                       right: 25.w,
                                       top: 5.h,
                                       bottom: 5.h),
-                                  padding: EdgeInsets.all(12),
+                                  padding: const EdgeInsets.all(12),
                                   width: 228,
                                   decoration: BoxDecoration(
                                       gradient: LinearGradient(
@@ -160,57 +160,59 @@ class _ChatScreenState extends State<ChatScreen> {
               }),
         ),
         SingleChildScrollView(
-          child: SizedBox(
-            // height: MediaQuery.of(context).size.height*0.044,
-            width: double.infinity,
-            child: Card(
-              semanticContainer: true,
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              // elevation: 2,
-              // margin: EdgeInsets.all(7),
-              color: AppColors.fieldUnActive,
-              child: TextFormField(
-                // autocorrect: true,
-                // enableSuggestions: true,
-                maxLines: 5,
-                minLines: 1,
-                textAlignVertical: TextAlignVertical.center,
-                keyboardType: TextInputType.multiline,
-                onChanged: (value) {
-                  setState(() {});
-                },
-                controller: msgtext,
-                style: TextStyle(color: AppColors.whiteA700, fontSize: 14),
-                decoration: InputDecoration(
-                  hintText: 'Type a message...',
-                  border: InputBorder.none,
-                  suffixIcon: msgtext.text.length != 0 ?Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: IconButtonWidget(
-                      ontap: () {},
-                      height: 35,
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          AppColors.mainColor,
-                          AppColors.indigoAccent,
-                        ],
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: SizedBox(
+              width: double.infinity,
+              child: Card(
+                semanticContainer: true,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                // elevation: 2,
+                // margin: EdgeInsets.all(7),
+                color: AppColors.fieldUnActive,
+                child: TextFormField(
+                  // autocorrect: true,
+                  // enableSuggestions: true,
+                  maxLines: 3,
+                  minLines: 1,
+                  textAlignVertical: TextAlignVertical.center,
+                  keyboardType: TextInputType.multiline,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                  controller: msgtext,
+                  style: TextStyle(color: AppColors.whiteA700, fontSize: 14),
+                  decoration: InputDecoration(
+                    hintText: 'Type a message...',
+                    border: InputBorder.none,
+                    suffixIcon: msgtext.text.length != 0 ?Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButtonWidget(
+                        ontap: () {},
+                        height: 35,
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            AppColors.mainColor,
+                            AppColors.indigoAccent,
+                          ],
+                        ),
+                        width: 35,
+                        widget: const Icon(
+                          Icons.send,
+                          size: 18,
+                          color: Colors.white,
+                        ),
                       ),
-                      width: 35,
-                      widget: const Icon(
-                        Icons.send,
-                        size: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ) : Icon(Icons.emoji_emotions_outlined,color: AppColors.gray75,),
-                  contentPadding: const EdgeInsets.only(left: 10),
-                  hintStyle: TextStyle(
-                      color: const Color(0xff7C7C7C),
-                      fontWeight: FontWeight.w300,
-                      fontFamily: AppConstant.interMedium,
-                      fontSize: 15.sp),
+                    ) : Icon(Icons.emoji_emotions_outlined,color: AppColors.gray75,),
+                    contentPadding: const EdgeInsets.only(left: 10),
+                    hintStyle: TextStyle(
+                        color: const Color(0xff7C7C7C),
+                        fontWeight: FontWeight.w300,
+                        fontFamily: AppConstant.interMedium,
+                        fontSize: 15.sp),
+                  ),
                 ),
               ),
             ),

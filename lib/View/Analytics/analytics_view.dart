@@ -28,9 +28,9 @@ class AnalyticsScreen extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                AppColors.bgGradient2,
-                AppColors.bgGradient2,
-                AppColors.bgGradient2,
+                AppColors.scaflodbgcolor,
+                AppColors.scaflodbgcolor,
+                AppColors.scaflodbgcolor,
               ],
             ),
           ),
@@ -66,8 +66,8 @@ class AnalyticsScreen extends StatelessWidget {
                   decoration: const BoxDecoration(
                       color: Color(0xff27283C),
                       borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(10),
-                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(20),
                       )),
                   child: Padding(
                     padding:
@@ -1054,9 +1054,9 @@ class AnalyticsScreen extends StatelessWidget {
                 Container(
                   width: 372.w,
                   height: 265.h,
-                  decoration: BoxDecoration(
-                      color: const Color(0xff27283C),
-                      borderRadius: BorderRadius.circular(10)),
+                  decoration: const BoxDecoration(
+                      color: Color(0xff27283C),
+                      borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20))),
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),

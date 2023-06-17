@@ -9,6 +9,7 @@ class AppColors {
   static Color textFieldActive = const Color(0xffA95DF9);
   static Color indigo = const Color(0xff502594);
   static Color indigoAccent = const Color(0xff7356EC);
+  static Color indigoAccent2 = const Color(0xff7c67d7);
   static Color redAccsent = const Color(0xffFB5B78);
   static Color black = const Color(0xff000000);
   static Color gray = const Color(0xff4d4b4b);

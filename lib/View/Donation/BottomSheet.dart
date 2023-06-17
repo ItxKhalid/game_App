@@ -203,7 +203,7 @@ class BottomSheetView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600, // Set the desired height here
+      height: 720,
       child: Column(
         children: [
           Padding(

@@ -135,7 +135,7 @@ class _InfoOngoingStreamViewState extends State<InfoOngoingStreamView> {
                         const SizedBox(height: 20),
                         SizedBox(
                           // height: 480,
-                          height: MediaQuery.of(context).size.height * 0.676,
+                          height: MediaQuery.of(context).size.height * 0.75,
                           child: TabBarView(
                             physics: const BouncingScrollPhysics(),
                             controller: tabController,

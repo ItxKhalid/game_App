@@ -16,7 +16,7 @@ class SuccessBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 600,
+      height: 720,
       child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
         child: Container(

@@ -180,7 +180,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       ContentView(),
       const CreateStream(),
       const MessagesView(),
-      const FavoritesView(),
+       FavoritesView(),
       // AllUserScreen(),
       // ProfileScreen()
     ];
@@ -197,7 +197,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.indigoAccent.withOpacity(0.6),
-                    blurRadius: 10.0, // soften the shadow
+                    blurRadius: 20.0, // soften the shadow
                     spreadRadius: 4.0, //extend the shadow
                     offset: const Offset(
                       0.0, // Move to right 10  horizontally
@@ -218,7 +218,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             child: const Icon(
               Icons.window_rounded,
             )),
-        activeColorSecondary: AppColors.mainColor,
+        activeColorSecondary: AppColors.indigoAccent2,
         title: 'Home',
         textStyle: const TextStyle(color: Colors.white, fontSize: 8),
       ),
@@ -231,7 +231,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.mainColor.withOpacity(0.6),
-                    blurRadius: 10.0, // soften the shadow
+                    blurRadius: 20.0, // soften the shadow
                     spreadRadius: 0.0, //extend the shadow
                     offset: const Offset(
                       0.0, 
@@ -252,7 +252,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             child: const Icon(
               Icons.play_arrow_rounded,
             )),
-        activeColorSecondary: AppColors.mainColor,
+        activeColorSecondary: AppColors.indigoAccent2,
         title: 'Content',
         textStyle: const TextStyle(color: Colors.white, fontSize: 8),
       ),
@@ -329,7 +329,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.mainColor.withOpacity(0.6),
-                    blurRadius: 10.0, // soften the shadow
+                    blurRadius: 20.0, // soften the shadow
                     spreadRadius: 0.0, //extend the shadow
                     offset: const Offset(
                       0.0,
@@ -341,7 +341,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 borderRadius: BorderRadius.circular(100)),
             child: SvgPicture.asset(
               AppImages.imgSearch,
-              color: AppColors.mainColor,
+              color: AppColors.indigoAccent2,
             )),
         activeColorPrimary: Colors.white,
         inactiveIcon: Container(
@@ -352,7 +352,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               padding: const EdgeInsets.only(top: 2),
               child: SvgPicture.asset(AppImages.imgSearch),
             )),
-        activeColorSecondary: AppColors.mainColor,
+        activeColorSecondary: AppColors.indigoAccent2,
         title: 'Massage',
         textStyle: const TextStyle(color: Colors.white, fontSize: 8),
       ),
@@ -365,7 +365,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.mainColor.withOpacity(0.6),
-                    blurRadius: 10.0, // soften the shadow
+                    blurRadius: 20.0, // soften the shadow
                     spreadRadius: 0.0, //extend the shadow
                     offset: const Offset(
                       0.0,
@@ -386,7 +386,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             child: const Icon(
               Icons.star_rate_rounded,
             )),
-        activeColorSecondary: AppColors.mainColor,
+        activeColorSecondary: AppColors.indigoAccent2,
         title: 'Home',
         textStyle: const TextStyle(color: Colors.white, fontSize: 8),
       ),

@@ -19,7 +19,7 @@ class BottomSheetContentCreateNFt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600, // Set the desired height here
+      height: 700, // Set the desired height here
       child: SingleChildScrollView(
         padding: EdgeInsets.zero,
         physics: const BouncingScrollPhysics(),
